@@ -19,29 +19,29 @@
 #' @rdname blanco_palettes
 #' @format ## `custom`
 #' An object of class `palettes_palette` with
-#' `r length(custom)` sequential colour palettes.
-#'  Use `names(custom)` to return all palette names.
+#' `r length(custom)` discrete colors.
+#'  Use `names(custom)` to return all color names.
 "custom"
 
 #' @rdname blanco_palettes
 #' @format ## `gradients`
 #' An object of class `palettes_palette` with
-#' `r length(gradients)` discrete color palettes.
+#' `r length(gradients)` continuous color palettes.
 #'  Use `names(gradients)` to return all palette names.
 "gradients"
 
 #' @rdname blanco_palettes
 #' @format ## `grays`
 #' An object of class `palettes_palette` with
-#' `r length(grays)` discrete color palettes.
-#'  Use `names(grays)` to return all palette names.
+#' `r length(grays)` discrete colors.
+#'  Use `names(grays)` to return all color names.
 "grays"
 
 #' @rdname blanco_palettes
 #' @format ## `misc_pal`
 #' An object of class `palettes_palette` with
-#' `r length(misc_pal)` sequential colour palettes.
-#'  Use `names(misc_pal)` to return all palette names.
+#' `r length(misc_pal)` discrete colors.
+#'  Use `names(misc_pal)` to return all color names.
 "misc_pal"
 
 document()
