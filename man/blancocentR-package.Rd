@@ -6,7 +6,7 @@
 \alias{blancocentR-package}
 \title{blancocentR: A helper package for Blanco Center staff}
 \description{
-A ggplot2 theme for a cohesive look across Blanco Center visualizations. Color palettes to be used in ggplot2 or software outside of R. Built using the 'palettes' package, which provides methods for printing, formatting, casting and coercion, extraction and updating of components, plotting, color mixing arithmetic, and color interpolation.
+A ggplot2 theme for a cohesive look across Blanco Center visualizations. Color palettes to be used in Blanco Center visualizations. Palettes built using the 'palettes' package, which provides methods for printing, formatting, casting and coercion, extraction and updating of components, plotting, color mixing arithmetic, and color interpolation.
 }
 \seealso{
 Useful links:

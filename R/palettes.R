@@ -1,6 +1,6 @@
 #' Blanco palettes
 #'
-#' Palettes inspired by sunsets in the Canadian Prairies.
+#' Palettes for a cohesive look across Blanco Center visualizations.
 #'
 #' @format ## `blanco_palettes`
 #' An object of class `palettes_palette` with `r length(blanco_palettes)`

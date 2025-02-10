@@ -11,35 +11,35 @@
 \format{
 \subsection{\code{blanco_palettes}}{
 
-An object of class \code{palettes_palette} with 34
+An object of class \code{palettes_palette} with \verb{r length(blanco_palettes)}
 color palettes. Use \code{names(blanco_palettes)} to return all palette names.
 }
 
 \subsection{\code{custom}}{
 
 An object of class \code{palettes_palette} with
-5 sequential colour palettes.
+\verb{r length(custom)} sequential colour palettes.
 Use \code{names(custom)} to return all palette names.
 }
 
 \subsection{\code{gradients}}{
 
 An object of class \code{palettes_palette} with
-4 discrete color palettes.
+\verb{r length(gradients)} discrete color palettes.
 Use \code{names(gradients)} to return all palette names.
 }
 
 \subsection{\code{grays}}{
 
 An object of class \code{palettes_palette} with
-4 discrete color palettes.
+\verb{r length(grays)} discrete color palettes.
 Use \code{names(grays)} to return all palette names.
 }
 
 \subsection{\code{misc_pal}}{
 
 An object of class \code{palettes_palette} with
-21 sequential colour palettes.
+\verb{r length(misc_pal)} sequential colour palettes.
 Use \code{names(misc_pal)} to return all palette names.
 }
 }
@@ -58,7 +58,7 @@ grays
 misc_pal
 }
 \description{
-Palettes inspired by sunsets in the Canadian Prairies.
+Palettes for a cohesive look across Blanco Center visualizations.
 }
 \examples{
 # Get all palettes by name.
