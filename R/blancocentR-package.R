@@ -6,3 +6,4 @@
 #' @import palettes
 #' @keywords internal
 #' @name blanco-palettes
+NULL
