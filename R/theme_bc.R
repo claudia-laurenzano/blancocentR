@@ -17,12 +17,7 @@ theme_bc <- function(title_font = "Bitter",
   sysfonts::font_add_google("Bitter", family = "Bitter") # serif
   showtext::showtext_auto()
 
-  text_sans <- base_font
-  text_serif <- title_font
-
   # colors
-  dark_text <- "#1A242F"
-  light_text <- "#575E66"
   light_gray <- "#D1D3D5"
   ull_red <- "#a00b0b"
 
@@ -139,7 +134,7 @@ theme_bc <- function(title_font = "Bitter",
 # Color sim ---------------------------------------------------------------
 
 # show colors in different color deficiency simulations
-show_cvd = function(x){
+show_cvd <- function(x){
   scales::show_col(c(x,
                      deutan(x),
                      protan(x),
