@@ -132,3 +132,18 @@ theme_bc <- function(title_font = "Bitter",
         }
     }
 }
+
+
+
+
+# Color sim ---------------------------------------------------------------
+
+# show colors in different color deficiency simulations
+show_cvd = function(x){
+  scales::show_col(c(x,
+                     deutan(x),
+                     protan(x),
+                     tritan(x),
+                     desaturate(x)),
+                   ncol = length(x))
+}
