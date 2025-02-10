@@ -1,6 +1,8 @@
 #' @keywords internal
 "_PACKAGE"
 
-## usethis namespace: start
-## usethis namespace: end
-NULL
+#' Internal palettes methods
+#'
+#' @import palettes
+#' @keywords internal
+#' @name blanco-palettes

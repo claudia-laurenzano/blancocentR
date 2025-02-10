@@ -44,4 +44,4 @@
 #'  Use `names(misc_pal)` to return all palette names.
 "misc_pal"
 
-# document()
+document()
