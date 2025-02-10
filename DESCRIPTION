@@ -4,10 +4,10 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Claudia", "Laurenzano", , "claudialaurenzano@gmail.com", role = c("aut", "cre"))
 Description: A ggplot2 theme for a cohesive look across Blanco Center
-    visualizations. Colour palettes to be used in ggplot2 or software
+    visualizations. Color palettes to be used in ggplot2 or software
     outside of R. Built using the 'palettes' package, which provides
     methods for printing, formatting, casting and coercion, extraction and
-    updating of components, plotting, colour mixing arithmetic, and colour
+    updating of components, plotting, color mixing arithmetic, and color
     interpolation.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
@@ -16,7 +16,3 @@ BugReports: https://github.com/user/repo/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Depends: 
-    palettes,
-    R (>= 2.10)
-LazyData: true

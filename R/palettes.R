@@ -30,4 +30,4 @@
 #'  Use `names(custom)` to return all palette names.
 "custom"
 
-document()
+# document()
