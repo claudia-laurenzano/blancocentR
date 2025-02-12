@@ -16,7 +16,7 @@
 get_region_geometry <- function(df, region_number, region_name){
   df %>%
     dplyr::group_by({{region_number}}, {{region_name}}) %>%
-    dplyr::summarize(across(geometry, ~sf::st_union(.))) %>%
+    dplyr::summarize(dplyr::across(geometry, ~sf::st_union(.))) %>%
     dplyr::ungroup() %>%
     tidyr::drop_na({{region_number}}) %>%
     dplyr::mutate(center = sf::st_centroid(geometry))
