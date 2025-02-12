@@ -11,8 +11,7 @@ Description: A ggplot2 theme for a cohesive look across Blanco Center
     arithmetic, and color interpolation.Louisiana geography (parishes and
     regions) for easy mapping. Shapefiles and population data from the
     U.S. Census aquired via the 'tidycensus' package.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 URL: https://github.com/user/repo
 BugReports: https://github.com/user/repo/issues
 Encoding: UTF-8
@@ -22,3 +21,10 @@ Depends:
     palettes,
     R (>= 2.10)
 LazyData: true
+Imports: 
+    colorspace,
+    ggplot2,
+    ggtext,
+    scales,
+    showtext,
+    sysfonts

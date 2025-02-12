@@ -43,5 +43,3 @@
 #' `r length(misc_pal)` discrete colors.
 #'  Use `names(misc_pal)` to return all color names.
 "misc_pal"
-
-document()

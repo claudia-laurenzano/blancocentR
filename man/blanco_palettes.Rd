@@ -11,36 +11,36 @@
 \format{
 \subsection{\code{blanco_palettes}}{
 
-An object of class \code{palettes_palette} with \verb{r length(blanco_palettes)}
+An object of class \code{palettes_palette} with 34
 color palettes. Use \code{names(blanco_palettes)} to return all palette names.
 }
 
 \subsection{\code{custom}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(custom)} sequential colour palettes.
-Use \code{names(custom)} to return all palette names.
+5 discrete colors.
+Use \code{names(custom)} to return all color names.
 }
 
 \subsection{\code{gradients}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(gradients)} discrete color palettes.
+4 continuous color palettes.
 Use \code{names(gradients)} to return all palette names.
 }
 
 \subsection{\code{grays}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(grays)} discrete color palettes.
-Use \code{names(grays)} to return all palette names.
+4 discrete colors.
+Use \code{names(grays)} to return all color names.
 }
 
 \subsection{\code{misc_pal}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(misc_pal)} sequential colour palettes.
-Use \code{names(misc_pal)} to return all palette names.
+21 discrete colors.
+Use \code{names(misc_pal)} to return all color names.
 }
 }
 \source{

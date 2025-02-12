@@ -1,6 +1,24 @@
 
 # Theme -------------------------------------------------------------------
 
+#' Title
+#'
+#' @param title_font Font used for titles: plot title, axis titles, legend title.
+#' @param base_font Font used for all other text.
+#' @param dark_text Color used for axis and legend titles.
+#' @param light_text Color used for everything else, except plot title.
+#' @param void TRUE or FALSE: removes all axis elements. Suggested for maps.
+#' @param grid_x TRUE or FALSE: adds x gridlines.
+#' @param grid_y TRUE or FALSE: adds y gridlines.
+#' @param base_size Base text size.
+#' @param base_line_size Base line size.
+#' @param base_rect_size Base rectangle size.
+#'
+#' @return A ggplot2 theme.
+#' @export
+#'
+#' @examples
+#' theme_bc(title_font = "Bitter", base_font = "Quicksand", void = TRUE)
 theme_bc <- function(title_font = "Bitter",
                      base_font = "Quicksand",
                      dark_text = "#1A242F",
@@ -134,11 +152,21 @@ theme_bc <- function(title_font = "Bitter",
 # Color sim ---------------------------------------------------------------
 
 # show colors in different color deficiency simulations
+#' Title
+#'
+#' @param x A color, a vector of colors, or a color palette.
+#'
+#' @return A plot showing selected color or colors in different color deficiency simulations.
+#' @export
+#'
+#' @examples
+#' x <- c("steelblue", "firebrick", "gold")
+#' show_cvd(x)
 show_cvd <- function(x){
   scales::show_col(c(x,
-                     deutan(x),
-                     protan(x),
-                     tritan(x),
-                     desaturate(x)),
+                     colorspace::deutan(x),
+                     colorspace::protan(x),
+                     colorspace::tritan(x),
+                     colorspace::desaturate(x)),
                    ncol = length(x))
 }
