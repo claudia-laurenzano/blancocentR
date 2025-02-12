@@ -10,23 +10,30 @@ Description: A ggplot2 theme for a cohesive look across Blanco Center
     extraction and updating of components, plotting, color mixing
     arithmetic, and color interpolation.Louisiana geography (parishes and
     regions) for easy mapping. Shapefiles and population data from the
-    U.S. Census aquired via the 'tidycensus' package.
-License: MIT + file LICENSE
+    U.S. Census aquired via the 'tidycensus' package.Includes 'parishes'
+    and 'louisiana' data: Louisiana's 64 parishes, region designations via
+    different state agencies and organizations, and geometry for parishes
+    and regions, as well as center points.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
 URL: https://github.com/user/repo
 BugReports: https://github.com/user/repo/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Depends: 
-    palettes,
-    R (>= 2.10)
-LazyData: true
 Imports: 
     colorspace,
     dplyr,
     ggplot2,
     ggtext,
     jsonlite,
+    lubridate,
+    magrittr,
     scales,
+    sf,
     showtext,
-    sysfonts
+    stringr,
+    sysfonts,
+    tidycensus
+Depends: 
+    palettes
