@@ -23,6 +23,7 @@ Depends:
 LazyData: true
 Imports: 
     colorspace,
+    dplyr,
     ggplot2,
     ggtext,
     scales,
