@@ -14,6 +14,7 @@
 #' @param base_line_size Base line size.
 #' @param base_rect_size Base rectangle size.
 #'
+#' @importFrom ggplot2 '%+replace%'
 #' @return A ggplot2 theme.
 #' @export
 #'
@@ -46,14 +47,14 @@ theme_bc <- function(title_font = "Bitter",
         base_line_size = base_line_size,
         base_rect_size = base_rect_size
     )  %+replace%
-        theme(
+        ggplot2::theme(
             # background
-            panel.background = element_blank(),
-            plot.background  = element_blank(),
+            panel.background = ggplot2::element_blank(),
+            plot.background  = ggplot2::element_blank(),
 
             # text
-            text = element_text(family = base_font,
-                                color = light_text),
+            text = ggplot2::element_text(family = base_font,
+                                         color = light_text),
 
             # plot title
             plot.title.position = "plot",
@@ -61,14 +62,14 @@ theme_bc <- function(title_font = "Bitter",
                 family = title_font,
                 size = base_size * 1.5, # 12*1.5=18
                 color = ull_red,
-                margin = margin(0, 0, 8, 0)
+                margin = ggplot2::margin(0, 0, 8, 0)
             ),
 
             # plot subtitle
             plot.subtitle = ggtext::element_textbox_simple(
                 size = base_size * 1.2, # 12*1.2=14.4
                 lineheight = 1.2,
-                margin = margin(0, 0, 12, 0)
+                margin = ggplot2::margin(0, 0, 12, 0)
             ),
 
             # plot caption
@@ -76,61 +77,61 @@ theme_bc <- function(title_font = "Bitter",
             plot.caption = ggtext::element_textbox_simple(
                 size = base_size * 0.84, # 12*0.84=10.08
                 halign = 1,
-                margin = margin(12, 0, 0, 0) # t = 6
+                margin = ggplot2::margin(12, 0, 0, 0) # t = 6
             ),
 
             # legend
             legend.position = "top",
             legend.justification = "left",
-            legend.title = element_text(
+            legend.title = ggplot2::element_text(
                 family = title_font,
                 size = base_size,
                 color = dark_text
             ),
-            legend.text = element_text(size = base_size),
-            legend.box.margin = margin(0, 0, 4, 0),
+            legend.text = ggplot2::element_text(size = base_size),
+            legend.box.margin = ggplot2::margin(0, 0, 4, 0),
 
             # axes
-            axis.title = element_text(
+            axis.title = ggplot2::element_text(
                 family = title_font,
                 size = base_size * 0.917, # 12*0.917=11.004
                 color = dark_text
             ),
-            axis.text = element_text(size = base_size * 0.84), # 12*0.84=10.08
-            axis.ticks = element_line(color = light_text),
-            axis.line = element_line(color = light_text),
+            axis.text = ggplot2::element_text(size = base_size * 0.84), # 12*0.84=10.08
+            axis.ticks = ggplot2::element_line(color = light_text),
+            axis.line = ggplot2::element_line(color = light_text),
 
             # facet strips
-            strip.background = element_blank(),
-            strip.text = element_text(
+            strip.background = ggplot2::element_blank(),
+            strip.text = ggplot2::element_text(
                 family = title_font,
                 size = base_size * 1.1, # 12*1.1=13.2
                 color = dark_text,
-                margin = margin(1, 1, 6, 1)
+                margin = ggplot2::margin(1, 1, 6, 1)
             )
 
         )
 
     # void
-    theme_void <- theme + theme(
-        axis.text = element_blank(),
-        axis.title = element_blank(),
-        axis.line =  element_blank(),
-        axis.ticks = element_blank()
+    theme_void <- theme + ggplot2::theme(
+        axis.text = ggplot2::element_blank(),
+        axis.title = ggplot2::element_blank(),
+        axis.line =  ggplot2::element_blank(),
+        axis.ticks = ggplot2::element_blank()
     )
 
     # grid lines
-    theme_grid_xy <- theme + theme(
-        panel.grid.major.x = element_line(color = light_gray),
-        panel.grid.major.y = element_line(color = light_gray)
+    theme_grid_xy <- theme + ggplot2::theme(
+        panel.grid.major.x = ggplot2::element_line(color = light_gray),
+        panel.grid.major.y = ggplot2::element_line(color = light_gray)
     )
 
-    theme_grid_x <- theme + theme(
-        panel.grid.major.x = element_line(color = light_gray)
+    theme_grid_x <- theme + ggplot2::theme(
+        panel.grid.major.x = ggplot2::element_line(color = light_gray)
     )
 
-    theme_grid_y <- theme + theme(
-        panel.grid.major.y = element_line(color = light_gray)
+    theme_grid_y <- theme + ggplot2::theme(
+        panel.grid.major.y = ggplot2::element_line(color = light_gray)
     )
 
 

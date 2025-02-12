@@ -3,3 +3,4 @@
 export(show_cvd)
 export(theme_bc)
 import(palettes)
+importFrom(ggplot2,'%+replace%')
