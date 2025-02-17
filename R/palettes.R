@@ -52,6 +52,13 @@
 "cols_dcfs"
 
 #' @rdname blanco_palettes
+#' @format ## `cols_dcfs_nm`
+#' An object of class `palettes_palette` with
+#' `r length(cols_dcfs_nm)` discrete colors.
+#'  Use `names(cols_dcfs_nm)` to return all color names.
+"cols_dcfs_nm"
+
+#' @rdname blanco_palettes
 #' @format ## `cols_dcfs1`
 #' An object of class `palettes_palette` with
 #' `r length(cols_dcfs1)` discrete colors.
