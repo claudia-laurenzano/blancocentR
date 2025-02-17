@@ -101,6 +101,13 @@
 "cols_de"
 
 #' @rdname blanco_palettes
+#' @format ## `cols_de_nm`
+#' An object of class `palettes_palette` with
+#' `r length(cols_de_nm)` discrete colors.
+#'  Use `names(cols_de_nm)` to return all color names.
+"cols_de_nm"
+
+#' @rdname blanco_palettes
 #' @format ## `cols_de1`
 #' An object of class `palettes_palette` with
 #' `r length(cols_de1)` discrete colors.
@@ -129,18 +136,18 @@
 "cols_de2_nm"
 
 #' @rdname blanco_palettes
-#' @format ## `cols_de_nm`
-#' An object of class `palettes_palette` with
-#' `r length(cols_de_nm)` discrete colors.
-#'  Use `names(cols_de_nm)` to return all color names.
-"cols_de_nm"
-
-#' @rdname blanco_palettes
 #' @format ## `cols_ldh`
 #' An object of class `palettes_palette` with
 #' `r length(cols_ldh)` discrete colors.
 #'  Use `names(cols_ldh)` to return all color names.
 "cols_ldh"
+
+#' @rdname blanco_palettes
+#' @format ## `cols_ldh_nm`
+#' An object of class `palettes_palette` with
+#' `r length(cols_ldh_nm)` discrete colors.
+#'  Use `names(cols_ldh_nm)` to return all color names.
+"cols_ldh_nm"
 
 #' @rdname blanco_palettes
 #' @format ## `cols_ldh1`
@@ -169,11 +176,4 @@
 #' `r length(cols_ldh2_nm)` discrete colors.
 #'  Use `names(cols_ldh2_nm)` to return all color names.
 "cols_ldh2_nm"
-
-#' @rdname blanco_palettes
-#' @format ## `cols_ldh_nm`
-#' An object of class `palettes_palette` with
-#' `r length(cols_ldh_nm)` discrete colors.
-#'  Use `names(cols_ldh_nm)` to return all color names.
-"cols_ldh_nm"
 

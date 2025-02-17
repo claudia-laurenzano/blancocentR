@@ -14,6 +14,7 @@ grays <- pal_palette(
   light_gray = "#D1D3D5"
 )
 
+plot(grays)
 usethis::use_data(grays, overwrite = TRUE)
 
 
@@ -28,6 +29,7 @@ custom <- pal_palette(
   col_ru = "#23464f" # misc_pal$darkteal
 )
 
+plot(custom)
 usethis::use_data(custom, overwrite = TRUE)
 
 
@@ -41,6 +43,7 @@ gradients <- pal_palette(
   ru_gradient = pal_ramp(pal_color(c("#102024", "#98A8AC")), n = 5)
 )
 
+plot(gradients)
 usethis::use_data(gradients, overwrite = TRUE)
 
 
@@ -62,6 +65,7 @@ list_de <- list(
 )
 
 cols_de <- as_palette(list_de)
+plot(cols_de)
 usethis::use_data(cols_de, overwrite = TRUE)
 
 list_de_nm <- list(
@@ -221,6 +225,7 @@ misc_pal = pal_palette(
   "vintageviolet" = "#77839b"
 )
 
+plot(misc_pal)
 usethis::use_data(misc_pal, overwrite = TRUE)
 
 

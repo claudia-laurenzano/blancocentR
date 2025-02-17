@@ -14,184 +14,184 @@
 \alias{cols_dcfs2}
 \alias{cols_dcfs2_nm}
 \alias{cols_de}
+\alias{cols_de_nm}
 \alias{cols_de1}
 \alias{cols_de1_nm}
 \alias{cols_de2}
 \alias{cols_de2_nm}
-\alias{cols_de_nm}
 \alias{cols_ldh}
+\alias{cols_ldh_nm}
 \alias{cols_ldh1}
 \alias{cols_ldh1_nm}
 \alias{cols_ldh2}
 \alias{cols_ldh2_nm}
-\alias{cols_ldh_nm}
 \title{Blanco palettes}
 \format{
 \subsection{\code{blanco_palettes}}{
 
-An object of class \code{palettes_palette} with \verb{r length(blanco_palettes)}
+An object of class \code{palettes_palette} with 190
 color palettes. Use \code{names(blanco_palettes)} to return all palette names.
 }
 
 \subsection{\code{custom}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(custom)} discrete colors.
+5 discrete colors.
 Use \code{names(custom)} to return all color names.
 }
 
 \subsection{\code{gradients}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(gradients)} continuous color palettes.
+4 continuous color palettes.
 Use \code{names(gradients)} to return all palette names.
 }
 
 \subsection{\code{grays}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(grays)} discrete colors.
+4 discrete colors.
 Use \code{names(grays)} to return all color names.
 }
 
 \subsection{\code{misc_pal}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(misc_pal)} discrete colors.
+21 discrete colors.
 Use \code{names(misc_pal)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_dcfs)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_dcfs)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_dcfs_nm)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_dcfs_nm)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs1}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_dcfs1)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_dcfs1)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs1_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_dcfs1_nm)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_dcfs1_nm)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs2}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_dcfs2)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_dcfs2)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs2_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_dcfs2_nm)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_dcfs2_nm)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_dcfs_nm)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_dcfs_nm)} to return all color names.
 }
 
 \subsection{\code{cols_de}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_de)} discrete colors.
+8 discrete colors.
 Use \code{names(cols_de)} to return all color names.
+}
+
+\subsection{\code{cols_de_nm}}{
+
+An object of class \code{palettes_palette} with
+8 discrete colors.
+Use \code{names(cols_de_nm)} to return all color names.
 }
 
 \subsection{\code{cols_de1}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_de1)} discrete colors.
+8 discrete colors.
 Use \code{names(cols_de1)} to return all color names.
 }
 
 \subsection{\code{cols_de1_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_de1_nm)} discrete colors.
+8 discrete colors.
 Use \code{names(cols_de1_nm)} to return all color names.
 }
 
 \subsection{\code{cols_de2}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_de2)} discrete colors.
+8 discrete colors.
 Use \code{names(cols_de2)} to return all color names.
 }
 
 \subsection{\code{cols_de2_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_de2_nm)} discrete colors.
+8 discrete colors.
 Use \code{names(cols_de2_nm)} to return all color names.
-}
-
-\subsection{\code{cols_de_nm}}{
-
-An object of class \code{palettes_palette} with
-\verb{r length(cols_de_nm)} discrete colors.
-Use \code{names(cols_de_nm)} to return all color names.
 }
 
 \subsection{\code{cols_ldh}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_ldh)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_ldh)} to return all color names.
+}
+
+\subsection{\code{cols_ldh_nm}}{
+
+An object of class \code{palettes_palette} with
+9 discrete colors.
+Use \code{names(cols_ldh_nm)} to return all color names.
 }
 
 \subsection{\code{cols_ldh1}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_ldh1)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_ldh1)} to return all color names.
 }
 
 \subsection{\code{cols_ldh1_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_ldh1_nm)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_ldh1_nm)} to return all color names.
 }
 
 \subsection{\code{cols_ldh2}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_ldh2)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_ldh2)} to return all color names.
 }
 
 \subsection{\code{cols_ldh2_nm}}{
 
 An object of class \code{palettes_palette} with
-\verb{r length(cols_ldh2_nm)} discrete colors.
+9 discrete colors.
 Use \code{names(cols_ldh2_nm)} to return all color names.
-}
-
-\subsection{\code{cols_ldh_nm}}{
-
-An object of class \code{palettes_palette} with
-\verb{r length(cols_ldh_nm)} discrete colors.
-Use \code{names(cols_ldh_nm)} to return all color names.
 }
 }
 \source{
@@ -224,6 +224,8 @@ cols_dcfs_nm
 
 cols_de
 
+cols_de_nm
+
 cols_de1
 
 cols_de1_nm
@@ -232,9 +234,9 @@ cols_de2
 
 cols_de2_nm
 
-cols_de_nm
-
 cols_ldh
+
+cols_ldh_nm
 
 cols_ldh1
 
@@ -243,8 +245,6 @@ cols_ldh1_nm
 cols_ldh2
 
 cols_ldh2_nm
-
-cols_ldh_nm
 }
 \description{
 Palettes for a cohesive look across Blanco Center visualizations.
