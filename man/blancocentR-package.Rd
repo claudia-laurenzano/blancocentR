@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Claudia Laurenzano \email{claudialaurenzano[at]gmail[dot]com} (\href{https://orcid.org/0000-0003-1406-8658}{ORCID})
+\strong{Maintainer}: Claudia Laurenzano \email{claudialaurenzano@gmail.com} (\href{https://orcid.org/0000-0003-1406-8658}{ORCID})
 
 }
 \keyword{internal}

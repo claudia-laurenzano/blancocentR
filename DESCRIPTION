@@ -2,7 +2,7 @@ Package: blancocentR
 Title: A helper package for Blanco Center staff
 Version: 0.0.0.9000
 Authors@R: 
-    person("Claudia", "Laurenzano", , "claudialaurenzano[at]gmail[dot]com", role = c("aut", "cre"),
+    person("Claudia", "Laurenzano", , "claudialaurenzano@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1406-8658"))
 Description: A ggplot2 theme for a cohesive look across Blanco Center
     visualizations. Color palettes to be used in Blanco Center
@@ -15,15 +15,19 @@ Description: A ggplot2 theme for a cohesive look across Blanco Center
     and 'louisiana' data: Louisiana's 64 parishes, region designations via
     different state agencies and organizations, and geometry for parishes
     and regions, as well as center points.
-License: MIT + file LICENSE
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
 URL: https://github.com/claudia-laurenzano/blancocentR/tree/main
 BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends: 
-    R (>= 2.10)
-LazyData: true
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
+    palettes
+Imports: 
+    colorspace,
+    ggplot2,
+    ggtext,
+    scales,
+    showtext,
+    sysfonts

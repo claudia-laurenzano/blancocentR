@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_bc.R
 \name{show_cvd}
 \alias{show_cvd}
-\title{Title}
+\title{Simulate color vision deficiency}
 \usage{
 show_cvd(x)
 }
@@ -13,7 +13,9 @@ show_cvd(x)
 A plot showing selected color or colors in different color deficiency simulations.
 }
 \description{
-Title
+Simulate color(s) to check how people with different variations of
+colorblindness may perceive your visualization. Supported variations include
+deuteranopia, protanopia,
 }
 \examples{
 x <- c("steelblue", "firebrick", "gold")
