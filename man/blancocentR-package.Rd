@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Claudia Laurenzano \email{claudialaurenzano[at]gmail.com}
+\strong{Maintainer}: Claudia Laurenzano \email{claudialaurenzano[at]gmail[dot]com}
 
 }
 \keyword{internal}
