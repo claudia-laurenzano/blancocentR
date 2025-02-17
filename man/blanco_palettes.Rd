@@ -3,9 +3,6 @@
 \docType{data}
 \name{blanco_palettes}
 \alias{blanco_palettes}
-\alias{custom}
-\alias{gradients}
-\alias{grays}
 \alias{misc_pal}
 \alias{cols_dcfs}
 \alias{cols_dcfs_nm}
@@ -31,27 +28,6 @@
 
 An object of class \code{palettes_palette} with \verb{r length(blanco_palettes)}
 color palettes. Use \code{names(blanco_palettes)} to return all palette names.
-}
-
-\subsection{\code{custom}}{
-
-An object of class \code{palettes_palette} with
-\verb{r length(custom)} discrete colors.
-Use \code{names(custom)} to return all color names.
-}
-
-\subsection{\code{gradients}}{
-
-An object of class \code{palettes_palette} with
-\verb{r length(gradients)} continuous color palettes.
-Use \code{names(gradients)} to return all palette names.
-}
-
-\subsection{\code{grays}}{
-
-An object of class \code{palettes_palette} with
-\verb{r length(grays)} discrete colors.
-Use \code{names(grays)} to return all color names.
 }
 
 \subsection{\code{misc_pal}}{
@@ -199,12 +175,6 @@ Use \code{names(cols_ldh2_nm)} to return all color names.
 }
 \usage{
 blanco_palettes
-
-custom
-
-gradients
-
-grays
 
 misc_pal
 

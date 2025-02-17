@@ -16,21 +16,21 @@
 #' plot(blanco_palettes)
 "blanco_palettes"
 
-#' @rdname blanco_palettes
+#' @rdname custom
 #' @format ## `custom`
 #' An object of class `palettes_palette` with
 #' `r length(custom)` discrete colors.
 #'  Use `names(custom)` to return all color names.
 "custom"
 
-#' @rdname blanco_palettes
+#' @rdname gradients
 #' @format ## `gradients`
 #' An object of class `palettes_palette` with
 #' `r length(gradients)` continuous color palettes.
 #'  Use `names(gradients)` to return all palette names.
 "gradients"
 
-#' @rdname blanco_palettes
+#' @rdname grays
 #' @format ## `grays`
 #' An object of class `palettes_palette` with
 #' `r length(grays)` discrete colors.
