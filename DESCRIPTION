@@ -2,7 +2,8 @@ Package: blancocentR
 Title: A helper package for Blanco Center staff
 Version: 0.0.0.9000
 Authors@R: 
-    person("Claudia", "Laurenzano", , "claudialaurenzano[at]gmail[dot]com", role = c("aut", "cre"))
+    person("Claudia", "Laurenzano", , "claudialaurenzano[at]gmail[dot]com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-1406-8658"))
 Description: A ggplot2 theme for a cohesive look across Blanco Center
     visualizations. Color palettes to be used in Blanco Center
     visualizations. Palettes built using the 'palettes' package, which
