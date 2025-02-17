@@ -28,6 +28,7 @@ Imports:
     colorspace,
     ggplot2,
     ggtext,
+    magrittr,
     scales,
     showtext,
     sysfonts
