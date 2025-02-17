@@ -1,7 +1,11 @@
 
 # Theme -------------------------------------------------------------------
 
-#' Title
+#' A ggplot2 theme for Blanco Center visualizations
+#'
+#' `theme_bc()` adds the Blanco Center theme to any plot created using `ggplot()`.
+#' Customize plot elements like font family and color and axis colors and line sizes.
+#' Grid lines for x and y axes can be added, or all axes can be removed, e.g. for maps.
 #'
 #' @param title_font Font used for titles: plot title, axis titles, legend title.
 #' @param base_font Font used for all other text.
@@ -153,7 +157,11 @@ theme_bc <- function(title_font = "Bitter",
 # Color sim ---------------------------------------------------------------
 
 # show colors in different color deficiency simulations
-#' Title
+#' Simulate color vision deficiency
+#'
+#' Simulate color(s) to check how people with different variations of
+#' colorblindness may perceive your visualization. Supported variations include
+#' deuteranopia, protanopia,
 #'
 #' @param x A color, a vector of colors, or a color palette.
 #'

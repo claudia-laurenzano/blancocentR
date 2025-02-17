@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_bc.R
 \name{theme_bc}
 \alias{theme_bc}
-\title{Title}
+\title{A ggplot2 theme for Blanco Center visualizations}
 \usage{
 theme_bc(
   title_font = "Bitter",
@@ -42,7 +42,9 @@ theme_bc(
 A ggplot2 theme.
 }
 \description{
-Title
+\code{theme_bc()} adds the Blanco Center theme to any plot created using \code{ggplot()}.
+Customize plot elements like font family and color and axis colors and line sizes.
+Grid lines for x and y axes can be added, or all axes can be removed, e.g. for maps.
 }
 \examples{
 theme_bc(title_font = "Bitter", base_font = "Quicksand", void = TRUE)

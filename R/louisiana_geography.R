@@ -2,13 +2,17 @@
 
 # Region geometry ---------------------------------------------------------
 
-#' Title
+#' Summarize parish-level geometry by region
 #'
-#' @param df A dataframe or tibble.
+#' `get_region_geometry()` summarizes parish polygons to a region polygon and
+#' returns an sf object with the region identifier(s) based on your region
+#' input, a geometry column containing the region polygon, and a center column
+#' with the region's center.
+#' @param df An sf object
 #' @param region_number Column with numeric or alphanumeric region ID
 #' @param region_name Column with region name ID
 #'
-#' @return A dataframe or tibble.
+#' @return An sf object
 #' @export
 #'
 #' @examples

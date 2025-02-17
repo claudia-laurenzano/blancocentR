@@ -2,22 +2,25 @@
 % Please edit documentation in R/louisiana_geography.R
 \name{get_region_geometry}
 \alias{get_region_geometry}
-\title{Title}
+\title{Summarize parish-level geometry by region}
 \usage{
 get_region_geometry(df, region_number, region_name)
 }
 \arguments{
-\item{df}{A dataframe or tibble.}
+\item{df}{An sf object}
 
 \item{region_number}{Column with numeric or alphanumeric region ID}
 
 \item{region_name}{Column with region name ID}
 }
 \value{
-A dataframe or tibble.
+An sf object
 }
 \description{
-Title
+\code{get_region_geometry()} summarizes parish polygons to a region polygon and
+returns an sf object with the region identifier(s) based on your region
+input, a geometry column containing the region polygon, and a center column
+with the region's center.
 }
 \examples{
 get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
