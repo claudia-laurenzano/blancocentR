@@ -161,7 +161,7 @@ theme_bc <- function(title_font = "Bitter",
 #'
 #' Simulate color(s) to check how people with different variations of
 #' colorblindness may perceive your visualization. Supported variations include
-#' deuteranopia, protanopia,
+#' deuteranopia, protanopia, tritanopia, and grayscale.
 #'
 #' @param x A color, a vector of colors, or a color palette.
 #'

@@ -15,7 +15,7 @@ A plot showing selected color or colors in different color deficiency simulation
 \description{
 Simulate color(s) to check how people with different variations of
 colorblindness may perceive your visualization. Supported variations include
-deuteranopia, protanopia,
+deuteranopia, protanopia, tritanopia, and grayscale.
 }
 \examples{
 x <- c("steelblue", "firebrick", "gold")
