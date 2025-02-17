@@ -15,7 +15,8 @@ Description: A ggplot2 theme for a cohesive look across Blanco Center
     and 'louisiana' data: Louisiana's 64 parishes, region designations via
     different state agencies and organizations, and geometry for parishes
     and regions, as well as center points.
-License: MIT + file LICENSE
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
 URL: https://github.com/claudia-laurenzano/blancocentR/tree/main
 BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
 Encoding: UTF-8

@@ -8,11 +8,11 @@
 \alias{grays}
 \alias{misc_pal}
 \alias{cols_dcfs}
+\alias{cols_dcfs_nm}
 \alias{cols_dcfs1}
 \alias{cols_dcfs1_nm}
 \alias{cols_dcfs2}
 \alias{cols_dcfs2_nm}
-\alias{cols_dcfs_nm}
 \alias{cols_de}
 \alias{cols_de1}
 \alias{cols_de1_nm}
@@ -66,6 +66,13 @@ Use \code{names(misc_pal)} to return all color names.
 An object of class \code{palettes_palette} with
 \verb{r length(cols_dcfs)} discrete colors.
 Use \code{names(cols_dcfs)} to return all color names.
+}
+
+\subsection{\code{cols_dcfs_nm}}{
+
+An object of class \code{palettes_palette} with
+\verb{r length(cols_dcfs_nm)} discrete colors.
+Use \code{names(cols_dcfs_nm)} to return all color names.
 }
 
 \subsection{\code{cols_dcfs1}}{
@@ -202,6 +209,8 @@ grays
 misc_pal
 
 cols_dcfs
+
+cols_dcfs_nm
 
 cols_dcfs1
 
