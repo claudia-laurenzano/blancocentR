@@ -21,13 +21,13 @@ BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Depends: 
-    palettes
 Imports: 
     colorspace,
+    dplyr,
     ggplot2,
     ggtext,
-    magrittr,
     scales,
     showtext,
     sysfonts
+Depends: 
+    palettes
