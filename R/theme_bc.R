@@ -23,7 +23,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' theme_bc(title_font = "Bitter", base_font = "Quicksand", void = TRUE)
+#' }
 theme_bc <- function(title_font = "Bitter",
                      base_font = "Quicksand",
                      dark_text = "#1A242F",

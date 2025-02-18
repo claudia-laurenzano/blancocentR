@@ -23,5 +23,7 @@ input, a geometry column containing the region polygon, and a center column
 with the region's center.
 }
 \examples{
+\dontrun{
 get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
+}
 }
