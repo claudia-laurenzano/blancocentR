@@ -16,7 +16,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
+#' }
 get_region_geometry <- function(df, region_number, region_name){
   df %>%
     dplyr::group_by({{region_number}}, {{region_name}}) %>%
