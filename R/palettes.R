@@ -275,9 +275,7 @@ ldh_pal <- function(region = "name", darken = 0) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
-#' de_pal()
-#' }
+#' #' \dontrun{de_pal()}
 de_pal <- function(region = "name", darken = 0) {
 
   if (!(darken %in% seq(0, 2, 1))) {
