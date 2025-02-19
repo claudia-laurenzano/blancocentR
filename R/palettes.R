@@ -7,6 +7,11 @@ light_text <- "#575E66"
 mid_gray <- "#94989D"
 light_gray <- "#D1D3D5"
 
+# export(dark_text)
+# export(light_text)
+# export(mid_gray)
+# export(light_gray)
+
 
 
 # Custom ------------------------------------------------------------------
@@ -16,6 +21,13 @@ col_la <- "#4776aa" # Louisiana blue
 col_us <- "#711F30" # U.S. red
 col_ur <- "#d24a41" # misc_pal$strawberry
 col_ru <- "#23464f" # misc_pal$darkteal
+
+
+# export(ull_red)
+# export(col_la)
+# export(col_us)
+# export(col_ur)
+# export(col_ru)
 
 
 
@@ -201,8 +213,6 @@ dcfs_pal <- function(region = "name", darken = 0) {
 #' @examples
 #' #' \dontrun{
 #' ldh_pal()
-#' ldh_pal(region = "number")
-#' ldh_pal(region = "number", darken = 1)
 #' }
 ldh_pal <- function(region = "name", darken = 0) {
 
@@ -267,8 +277,6 @@ ldh_pal <- function(region = "name", darken = 0) {
 #' @examples
 #' #' \dontrun{
 #' de_pal()
-#' de_pal(region = "number")
-#' de_pal(region = "number", darken = 1)
 #' }
 de_pal <- function(region = "name", darken = 0) {
 
@@ -386,3 +394,4 @@ misc_pal <- list(
   "vintageviolet" = "#77839b"
 )
 
+# export(misc_pal)

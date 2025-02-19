@@ -5,4 +5,5 @@
 #'
 #' @keywords internal
 #' @name blancocentR
+#' @export dark_text
 NULL

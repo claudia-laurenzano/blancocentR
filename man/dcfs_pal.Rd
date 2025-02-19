@@ -19,7 +19,7 @@ Colors are defined by region number or region name. The shade for region
 9 - Monroe can be darkened for small area geoms (e.g., geom_point()).
 }
 \examples{
-#' \dontrun{
+\dontrun{
 dcfs_pal()
 }
 }
