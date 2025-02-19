@@ -47,5 +47,7 @@ Customize plot elements like font family and color and axis colors and line size
 Grid lines for x and y axes can be added, or all axes can be removed, e.g. for maps.
 }
 \examples{
+\dontrun{
 theme_bc(title_font = "Bitter", base_font = "Quicksand", void = TRUE)
+}
 }
