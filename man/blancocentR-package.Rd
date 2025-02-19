@@ -2,7 +2,6 @@
 % Please edit documentation in R/blancocentR-package.R
 \docType{package}
 \name{blancocentR-package}
-\alias{blancocentR}
 \alias{blancocentR-package}
 \title{blancocentR: A helper package for Blanco Center staff}
 \description{
