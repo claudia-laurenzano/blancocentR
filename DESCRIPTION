@@ -6,7 +6,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-1406-8658"))
 Description: A ggplot2 theme for a cohesive look across Blanco Center
     visualizations. Color palettes to be used in Blanco Center
-    visualizations. Some palettes built using the 'monochromR' package,
+    visualizations. Some palettes built using the 'monochromeR' package,
     which provides methods for blending colors.Louisiana geography
     (parishes and regions) for easy mapping. Shapefiles and population
     data from the U.S. Census aquired via the 'tidycensus'
@@ -20,15 +20,3 @@ BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Imports: 
-    colorspace,
-    dplyr,
-    ggplot2,
-    ggtext,
-    magrittr,
-    monochromeR,
-    scales,
-    sf,
-    showtext,
-    sysfonts,
-    tidyr

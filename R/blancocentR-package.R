@@ -3,7 +3,6 @@
 
 #' Internal palettes methods
 #'
-#' @import palettes
 #' @keywords internal
-#' @name blanco-palettes
+#' @name blancocentR
 NULL
