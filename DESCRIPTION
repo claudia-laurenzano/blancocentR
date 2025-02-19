@@ -6,29 +6,17 @@ Authors@R:
            comment = c(ORCID = "0000-0003-1406-8658"))
 Description: A ggplot2 theme for a cohesive look across Blanco Center
     visualizations. Color palettes to be used in Blanco Center
-    visualizations. Palettes built using the 'palettes' package, which
-    provides methods for printing, formatting, casting and coercion,
-    extraction and updating of components, plotting, color mixing
-    arithmetic, and color interpolation.Louisiana geography (parishes and
-    regions) for easy mapping. Shapefiles and population data from the
-    U.S. Census aquired via the 'tidycensus' package.Includes 'parishes'
-    and 'louisiana' data: Louisiana's 64 parishes, region designations via
-    different state agencies and organizations, and geometry for parishes
-    and regions, as well as center points.
+    visualizations. Some palettes built using the 'monochromR' package,
+    which provides methods for blending colors.Louisiana geography
+    (parishes and regions) for easy mapping. Shapefiles and population
+    data from the U.S. Census aquired via the 'tidycensus'
+    package.Includes 'parishes' and 'louisiana' data: Louisiana's 64
+    parishes, region designations via different state agencies and
+    organizations, and geometry for parishes and regions, as well as
+    center points.
 License: MIT + file LICENSE
 URL: https://github.com/claudia-laurenzano/blancocentR/tree/main
 BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Imports: 
-    colorspace,
-    dplyr,
-    ggplot2,
-    ggtext,
-    magrittr,
-    scales,
-    showtext,
-    sysfonts
-Depends: 
-    palettes
