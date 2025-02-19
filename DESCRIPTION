@@ -25,7 +25,10 @@ Imports:
     dplyr,
     ggplot2,
     ggtext,
+    magrittr,
     monochromeR,
     scales,
+    sf,
     showtext,
-    sysfonts
+    sysfonts,
+    tidyr
