@@ -18,7 +18,8 @@ A character object.
 Create a gradient color for the U.S.
 }
 \examples{
-#' \dontrun{
+\dontrun{
 us_gradient_pal()
+us_gradient(n = 5)
 }
 }

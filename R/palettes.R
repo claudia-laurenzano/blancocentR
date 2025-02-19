@@ -45,8 +45,9 @@ col_ru <- "#23464f" # misc_pal$darkteal
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' la_gradient_pal()
+#' la_gradient(n = 5)
 #' }
 la_gradient_pal <- function(base = "#1C2F43", n = 7) {
   la_gradient <- monochromeR::generate_palette(
@@ -69,8 +70,9 @@ la_gradient_pal <- function(base = "#1C2F43", n = 7) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' us_gradient_pal()
+#' us_gradient(n = 5)
 #' }
 us_gradient_pal <- function(base = "#5A1826", n = 7) {
   us_gradient <- monochromeR::generate_palette(
@@ -93,8 +95,9 @@ us_gradient_pal <- function(base = "#5A1826", n = 7) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' ur_gradient_pal()
+#' ur_gradient(n = 5)
 #' }
 ur_gradient_pal <- function(base = "#d24a41", n = 7) {
   ur_gradient <- monochromeR::generate_palette(
@@ -117,8 +120,9 @@ ur_gradient_pal <- function(base = "#d24a41", n = 7) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' ru_gradient_pal()
+#' ru_gradient(n = 5)
 #' }
 ru_gradient_pal <- function(base = "#23464f", n = 7) {
   ru_gradient <- monochromeR::generate_palette(
@@ -149,6 +153,7 @@ ru_gradient_pal <- function(base = "#23464f", n = 7) {
 #' @examples
 #' \dontrun{
 #' dcfs_pal()
+#' dcfs_pal(region = "number", darken = 1)
 #' }
 dcfs_pal <- function(region = "name", darken = 0) {
 
@@ -211,8 +216,9 @@ dcfs_pal <- function(region = "name", darken = 0) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' ldh_pal()
+#' ldh_pal(region = "number", darken = 1)
 #' }
 ldh_pal <- function(region = "name", darken = 0) {
 
@@ -275,7 +281,10 @@ ldh_pal <- function(region = "name", darken = 0) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{de_pal()}
+#' \dontrun{
+#' de_pal()
+#' de_pal(region = "number", darken = 1)
+#' }
 de_pal <- function(region = "name", darken = 0) {
 
   if (!(darken %in% seq(0, 2, 1))) {
@@ -331,7 +340,7 @@ de_pal <- function(region = "name", darken = 0) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' misc_pal()
 #' misc_pal(get_list = TRUE)
 #' }

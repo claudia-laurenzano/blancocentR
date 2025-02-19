@@ -18,7 +18,7 @@ Create a color palette with 21 colors. Please note that misc_pal$vintageviolet
 ("#77839b") is used in some regional color palettes (e.g., DCFS, LDH).
 }
 \examples{
-#' \dontrun{
+\dontrun{
 misc_pal()
 misc_pal(get_list = TRUE)
 }

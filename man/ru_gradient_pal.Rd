@@ -18,7 +18,8 @@ A character object.
 Create a gradient color for rural areas.
 }
 \examples{
-#' \dontrun{
+\dontrun{
 ru_gradient_pal()
+ru_gradient(n = 5)
 }
 }

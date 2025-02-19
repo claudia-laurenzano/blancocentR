@@ -19,7 +19,8 @@ Colors are defined by region number or region name. The shade for region
 8 - North Delta can be darkened for small area geoms (e.g., geom_point()).
 }
 \examples{
-#' \dontrun{
+\dontrun{
 de_pal()
+de_pal(region = "number", darken = 1)
 }
 }

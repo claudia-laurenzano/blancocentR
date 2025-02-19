@@ -18,7 +18,8 @@ A character object.
 Create a gradient color for Louisiana.
 }
 \examples{
-#' \dontrun{
+\dontrun{
 la_gradient_pal()
+la_gradient(n = 5)
 }
 }

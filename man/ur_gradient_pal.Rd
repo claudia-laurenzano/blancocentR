@@ -18,7 +18,8 @@ A character object.
 Create a gradient color for urban areas.
 }
 \examples{
-#' \dontrun{
+\dontrun{
 ur_gradient_pal()
+ur_gradient(n = 5)
 }
 }
