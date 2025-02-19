@@ -6,7 +6,7 @@
 \alias{blancocentR-package}
 \title{blancocentR: A helper package for Blanco Center staff}
 \description{
-A ggplot2 theme for a cohesive look across Blanco Center visualizations. Color palettes to be used in Blanco Center visualizations. Palettes built using the 'palettes' package, which provides methods for printing, formatting, casting and coercion, extraction and updating of components, plotting, color mixing arithmetic, and color interpolation.Louisiana geography (parishes and regions) for easy mapping. Shapefiles and population data from the U.S. Census aquired via the 'tidycensus' package.Includes 'parishes' and 'louisiana' data: Louisiana's 64 parishes, region designations via different state agencies and organizations, and geometry for parishes and regions, as well as center points.
+A ggplot2 theme for a cohesive look across Blanco Center visualizations. Color palettes to be used in Blanco Center visualizations. Some palettes built using the 'monochromR' package, which provides methods for blending colors.Louisiana geography (parishes and regions) for easy mapping. Shapefiles and population data from the U.S. Census aquired via the 'tidycensus' package.Includes 'parishes' and 'louisiana' data: Louisiana's 64 parishes, region designations via different state agencies and organizations, and geometry for parishes and regions, as well as center points.
 }
 \seealso{
 Useful links:
