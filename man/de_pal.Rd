@@ -21,7 +21,5 @@ Colors are defined by region number or region name. The shade for region
 \examples{
 #' \dontrun{
 de_pal()
-de_pal(region = "number")
-de_pal(region = "number", darken = 1)
 }
 }
