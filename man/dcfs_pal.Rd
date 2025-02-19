@@ -21,7 +21,5 @@ Colors are defined by region number or region name. The shade for region
 \examples{
 #' \dontrun{
 dcfs_pal()
-dcfs_pal(region = "number")
-dcfs_pal(region = "number", darken = 1)
 }
 }

@@ -135,10 +135,8 @@ ru_gradient_pal <- function(base = "#23464f", n = 7) {
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' dcfs_pal()
-#' dcfs_pal(region = "number")
-#' dcfs_pal(region = "number", darken = 1)
 #' }
 dcfs_pal <- function(region = "name", darken = 0) {
 
