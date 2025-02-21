@@ -13,8 +13,7 @@ Description: A package for Blanco Center staff to facilitate a cohesive
     package which provides methods for blending colors. Shapefiles and
     population data from the U.S. Census were acquired via the
     'tidycensus' package.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 URL: https://github.com/claudia-laurenzano/blancocentR/tree/main
 BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
 Depends: 
