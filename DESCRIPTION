@@ -4,35 +4,21 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Claudia", "Laurenzano", , "claudialaurenzano@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1406-8658"))
-Description: A ggplot2 theme for a cohesive look across Blanco Center
-    visualizations. Color palettes to be used in Blanco Center
-    visualizations. Some palettes built using the 'monochromeR' package,
-    which provides methods for blending colors.Louisiana geography
-    (parishes and regions) for easy mapping. Shapefiles and population
-    data from the U.S. Census aquired via the 'tidycensus'
-    package.Includes 'parishes' and 'louisiana' data: Louisiana's 64
-    parishes, region designations via different state agencies and
-    organizations, and geometry for parishes and regions, as well as
-    center points.
-License: MIT + file LICENSE
-URL: https://github.com/claudia-laurenzano/blancocentR/tree/main, https://claudia-laurenzano.github.io/blancocentR/
+Description: A package for Blanco Center staff to facilitate a cohesive
+    look across data visualizations. This package includes ggplot2 theme,
+    colors and color palettes, two data files on Louisiana's 64 parishes
+    and region designations by different agencies and organizations (one
+    with and one without geometry), and a function to join parish polygons
+    into region polygons. Some palettes were built using the 'monochromeR'
+    package which provides methods for blending colors. Shapefiles and
+    population data from the U.S. Census were acquired via the
+    'tidycensus' package.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+URL: https://github.com/claudia-laurenzano/blancocentR/tree/main
 BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
+Depends: 
+    R (>= 2.10)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Imports: 
-    colorspace,
-    dplyr,
-    ggplot2,
-    ggtext,
-    magrittr,
-    monochromeR,
-    scales,
-    sf,
-    showtext,
-    sysfonts,
-    tidyr
-Suggests: 
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr

@@ -4,7 +4,10 @@
 \alias{misc_palette}
 \title{Color palette for miscellaneous uses}
 \usage{
-misc_palette()
+misc_palette(n = 21)
+}
+\arguments{
+\item{n}{Number of colors generated. Default = 21.}
 }
 \value{
 A character of length 21, a list of length 21.
