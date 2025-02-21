@@ -5,13 +5,12 @@
 \alias{blancocentR-package}
 \title{blancocentR: A helper package for Blanco Center staff}
 \description{
-A ggplot2 theme for a cohesive look across Blanco Center visualizations. Color palettes to be used in Blanco Center visualizations. Some palettes built using the 'monochromeR' package, which provides methods for blending colors.Louisiana geography (parishes and regions) for easy mapping. Shapefiles and population data from the U.S. Census aquired via the 'tidycensus' package.Includes 'parishes' and 'louisiana' data: Louisiana's 64 parishes, region designations via different state agencies and organizations, and geometry for parishes and regions, as well as center points.
+A package for Blanco Center staff to facilitate a cohesive look across data visualizations. This package includes ggplot2 theme, colors and color palettes, two data files on Louisiana's 64 parishes and region designations by different agencies and organizations (one with and one without geometry), and a function to join parish polygons into region polygons. Some palettes were built using the 'monochromeR' package which provides methods for blending colors. Shapefiles and population data from the U.S. Census were acquired via the 'tidycensus' package.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/claudia-laurenzano/blancocentR/tree/main}
-  \item \url{https://claudia-laurenzano.github.io/blancocentR/}
   \item Report bugs at \url{https://github.com/claudia-laurenzano/blancocentR/issues}
 }
 
