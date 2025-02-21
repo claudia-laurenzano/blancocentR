@@ -35,7 +35,7 @@ data(louisiana)
 
 We can now plot a simple map of Louisiana with outlines for each parish.
 
-```{r}
+```{r fig.height=6, fig.width=5, message=FALSE}
 library(ggplot2)
 
 p1 <- ggplot(louisiana) + geom_sf()
@@ -44,8 +44,8 @@ p1
 
 We can use the 'fill' aesthetic to designate different regions, e.g., DCFS regions.
 
-```{r}
-p2 <- ggplot(louisiana) + geom_sf(aes(fill = region_name_DCFS))
+```{r fig.height=6, fig.width=5, message=FALSE}
+p2 <- ggplot(louisiana) + geom_sf(aes(fill = region_name_DCFS), show.legend = FALSE) 
 p2
 ```
 
@@ -59,7 +59,7 @@ dcfs_regions <- get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
 
 Our sf object has changed from 64 observations (one for each parish) to 9 observations (one for each DCFS region). Let's plot a map!
 
-```{r}
+```{r fig.height=6, fig.width=5, warning=FALSE}
 ggplot(dcfs_regions) + 
   geom_sf(data = louisiana) + # parish boundaries
   geom_sf(lwd = 0.7, fill = NA) + # region boundaries
@@ -89,7 +89,7 @@ p3 <- ggplot(louisiana) +
 
 Let's see how plot p4 looks when we add our theme:
 
-```{r}
+```{r fig.width=7, fig.height = 5}
 p3 + 
   theme_bc()
 ```
@@ -98,7 +98,7 @@ p3 +
 
 If you like, you can add grid lines. For p4, we can add x grid lines. It wouldn't make much sense to add y grid lines, but you can if you want to using `theme_bc(grid_y = TRUE)`.
 
-```{r}
+```{r fig.width=7, fig.height = 5}
 p3 + labs(title = "Now with grid lines!") + 
   theme_bc(grid_x = TRUE) + 
   theme(legend.position = "none") # remove legend
@@ -108,7 +108,7 @@ p3 + labs(title = "Now with grid lines!") +
 
 Most maps look better without any axes. We can take advantage of the 'void' argument to remove all axes in one simple step.
 
-```{r}
+```{r fig.width=7, fig.height = 5}
 p1 + 
   labs(title = "Louisiana", 
        subtitle = "A map showing all 64 parishes") +
@@ -150,7 +150,7 @@ ggplot(named_colors, aes(x = 1, y = reorder(name, -order), fill = color)) +
 
 Miscellaneous colors are still available by name. You can call any specific color from this collection by naming it specifically, e.g., `misc_pal$jadegreen`, or print the whole list by calling `misc_pal`.
 
-```{r}
+```{r eval=FALSE}
 library(scales)
 
 list(
@@ -185,7 +185,9 @@ list(
   # row 5
   "vintageviolet" = "#77839b" # 9th region color
 )
+```
 
+```{r echo=FALSE, fig.width=5, fig.height = 5}
 show_col(paste(misc_pal))
 ```
 
@@ -199,7 +201,7 @@ Palette functions generate a list of colors and can be used directly in your ggp
 
 Region palettes map each region identifier to a specific color. Region identifiers can be either names or numbers. Let's take a look:
 
-```{r}
+```{r fig.width=8, fig.height = 5}
 p3 + 
   scale_color_manual(values = dcfs_palette()) + 
   theme_bc() + 
@@ -208,7 +210,7 @@ p3 +
 
 Similarly to the color aesthetics, we can map fill:
 
-```{r}
+```{r fig.height=6, fig.width=5}
 p2 + 
   scale_fill_manual(values = dcfs_palette()) + 
   theme_bc(void = TRUE) + 
@@ -219,7 +221,7 @@ This works because we mapped the color/fill aesthetics to the variable 'region_n
 
 If you prefer to map color to the region number instead, you'll need to convert the region's numeric value to a discrete value (e.g., by using `factor()`) and specify the use of region number rather than region name inside `dcfs_palette()` via the 'region' argument. In this step, we can also darken the color for region 9 - Monroe using the 'darken' argument.
 
-```{r}
+```{r fig.width=8, fig.height = 5}
 ggplot(louisiana) + 
   geom_point(aes(
     x = estimate,
@@ -246,7 +248,7 @@ Our legend title is now "factor(region_DCFS)" and the colors are mapped to the n
 
 Gradient palettes, just like the other palettes in blancocentR, generate colors. The default number of colors is 7 but you can adjust the number of colors using the 'n' argument. Because the function generates a number of colors, we can't use it directly for continuous variables, only for discrete variables. However, we can make use of `scale_fill_gradient()` by defining the 'low' and 'high' arguments like so:
 
-```{r}
+```{r fig.height=6, fig.width=5, message=FALSE}
 ggplot(louisiana) + 
   geom_sf(aes(fill = estimate)) + 
   scale_fill_gradient(
@@ -257,7 +259,7 @@ ggplot(louisiana) +
 
 In the previous example, we use the 7th color as 'high' because we didn't define the number of colors the palette generates. By default, this number is 7, so the 7th color is the lightest color. We can achieve the exact same result by generating n colors and selecting the nth value as 'high', e.g. using n = 2:
 
-```{r}
+```{r fig.height=6, fig.width=5, message=FALSE}
 ggplot(louisiana) + 
   geom_sf(aes(fill = estimate)) + 
   scale_fill_gradient(
@@ -274,25 +276,25 @@ Here are all gradient palettes:
 
 `la_gradient_palette()`
 
-```{r}
+```{r fig.width=5, fig.height = 5, message=FALSE}
 show_col(paste(la_gradient_palette()))
 ```
 
 `us_gradient_palette()`
 
-```{r}
+```{r fig.width=5, fig.height = 5, message=FALSE}
 show_col(paste(us_gradient_palette()))
 ```
 
 `ur_gradient_palette()`
 
-```{r}
+```{r fig.width=5, fig.height = 5, message=FALSE}
 show_col(paste(ur_gradient_palette()))
 ```
 
 `ru_gradient_palette()`
 
-```{r}
+```{r fig.width=5, fig.height = 5, message=FALSE}
 show_col(paste(ru_gradient_palette()))
 ```
 
@@ -302,7 +304,7 @@ You can access the miscellaneous colors in two ways: 1) via printing the list of
 
 [^2]: If your variable does exceed 21 distinct levels, you really shouldn't use colors to distinguish them!
 
-```{r}
+```{r fig.width=8, fig.height = 5}
 p3 + 
   scale_color_manual(values = misc_palette()) + 
   theme_bc() + 
@@ -326,7 +328,7 @@ The output shows 5 rows:
 
 5.  desaturated (gray-scale)
 
-```{r}
+```{r fig.width=5, fig.height = 5, message=FALSE}
 show_cvd(misc_palette(n = 5))
 ```
 
