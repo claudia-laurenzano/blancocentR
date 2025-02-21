@@ -11,6 +11,7 @@ A package for Blanco Center staff to facilitate a cohesive look across data visu
 Useful links:
 \itemize{
   \item \url{https://github.com/claudia-laurenzano/blancocentR/tree/main}
+  \item \url{https://claudia-laurenzano.github.io/blancocentR/}
   \item Report bugs at \url{https://github.com/claudia-laurenzano/blancocentR/issues}
 }
 
