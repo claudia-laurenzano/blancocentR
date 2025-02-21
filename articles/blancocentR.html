@@ -92,13 +92,13 @@ parish.</p>
 <span></span>
 <span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">p1</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-3-1.png" width="480"></p>
 <p>We can use the ‘fill’ aesthetic to designate different regions, e.g.,
 DCFS regions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
 <span><span class="va">p2</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
 </div>
 <div class="section level3">
 <h3 id="getting-region-polygons">Getting region polygons<a class="anchor" aria-label="anchor" href="#getting-region-polygons"></a>
@@ -114,10 +114,11 @@ for this example!</p>
 <p>Our sf object has changed from 64 observations (one for each parish)
 to 9 observations (one for each DCFS region). Let’s plot a map!</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dcfs_regions</span><span class="op">)</span> <span class="op">+</span> </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dcfs_regions</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> <span class="co"># parish boundaries</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">0.7</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> <span class="co"># region boundaries</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span><span class="op">)</span> <span class="co"># region names</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
 </div>
 <div class="section level3">
 <h3 id="the-theme">The theme<a class="anchor" aria-label="anchor" href="#the-theme"></a>
@@ -139,8 +140,10 @@ as needed. You can customize the theme by changing its arguments.</p>
 tutorial.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
-<span><span class="va">p4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">estimate</span>, y <span class="op">=</span> <span class="va">region_name_DCFS</span>, color <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">estimate</span>, y <span class="op">=</span> <span class="va">region_name_DCFS</span>, color <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/number.html" class="external-link">cut_short_scale</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Louisiana population in 2023"</span>, </span>
 <span>       subtitle <span class="op">=</span> <span class="st">"Parish population by DCFS region"</span>, </span>
@@ -149,9 +152,9 @@ tutorial.</p>
 <span>       x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s see how plot p4 looks when we add our theme:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p4</span> <span class="op">+</span> </span>
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 <div class="section level4">
 <h4 id="grid-lines">Grid lines<a class="anchor" aria-label="anchor" href="#grid-lines"></a>
 </h4>
@@ -159,22 +162,22 @@ tutorial.</p>
 It wouldn’t make much sense to add y grid lines, but you can if you want
 to using <code>theme_bc(grid_y = TRUE)</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p4</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Now with grid lines!"</span><span class="op">)</span> <span class="op">+</span> </span>
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Now with grid lines!"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span>grid_x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="co"># remove legend</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
 </div>
 <div class="section level4">
 <h4 id="void">Void<a class="anchor" aria-label="anchor" href="#void"></a>
 </h4>
-<p>For maps, I recommend taking advantage of the ‘void’ argument to
-remove all axes.</p>
+<p>Most maps look better without any axes. We can take advantage of the
+‘void’ argument to remove all axes in one simple step.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Louisiana"</span>, </span>
 <span>       subtitle <span class="op">=</span> <span class="st">"A map showing all 64 parishes"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span>void <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
 </div>
 </div>
 <div class="section level3">
@@ -185,53 +188,112 @@ and individual colors. Please note that accessing some of the colors may
 be different when you use this package from your experience sourcing
 colors from R scripts.</p>
 <div class="section level4">
+<h4 id="named-colors">Named colors<a class="anchor" aria-label="anchor" href="#named-colors"></a>
+</h4>
+<p>Named colors are accessible once you’ve loaded this package without
+showing up in your environment.</p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+</div>
+<div class="section level4">
+<h4 id="miscellaneous-colors">Miscellaneous colors<a class="anchor" aria-label="anchor" href="#miscellaneous-colors"></a>
+</h4>
+<p>Miscellaneous colors are still available by name. You can call any
+specific color from this collection by naming it specifically, e.g.,
+<code>misc_pal$jadegreen</code>, or print the whole list by calling
+<code>misc_pal</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  <span class="co"># row 1</span></span>
+<span>  <span class="st">"midnight"</span> <span class="op">=</span> <span class="st">"#243e56"</span>, </span>
+<span>  <span class="st">"mint"</span> <span class="op">=</span> <span class="st">"#bcefde"</span>, </span>
+<span>  <span class="st">"berry"</span> <span class="op">=</span> <span class="st">"#8f555a"</span>, </span>
+<span>  <span class="st">"sand"</span> <span class="op">=</span> <span class="st">"#e8d5a6"</span>, </span>
+<span>  <span class="st">"mustard"</span> <span class="op">=</span> <span class="st">"#ae9837"</span>, </span>
+<span>  </span>
+<span>  <span class="co"># row2</span></span>
+<span>  <span class="st">"charcoal"</span> <span class="op">=</span> <span class="st">"#3c424e"</span>, </span>
+<span>  <span class="st">"jadegreen"</span> <span class="op">=</span> <span class="st">"#4e7a59"</span>, </span>
+<span>  <span class="st">"pastelgreen"</span> <span class="op">=</span> <span class="st">"#7fc791"</span>, </span>
+<span>  <span class="st">"deepforest"</span> <span class="op">=</span> <span class="st">"#253a2a"</span>, </span>
+<span>  <span class="st">"darkteal"</span> <span class="op">=</span> <span class="st">"#23464f"</span>, <span class="co"># urban</span></span>
+<span>  </span>
+<span>  <span class="co"># row 3</span></span>
+<span>  <span class="st">"cloudfree"</span> <span class="op">=</span> <span class="st">"#62c3dc"</span>, </span>
+<span>  <span class="st">"midblue"</span> <span class="op">=</span> <span class="st">"#5ea2e3"</span>, </span>
+<span>  <span class="st">"silver"</span> <span class="op">=</span> <span class="st">"#94b3b0"</span>, </span>
+<span>  <span class="st">"strawberry"</span> <span class="op">=</span> <span class="st">"#d24a41"</span>, <span class="co"># rural</span></span>
+<span>  <span class="st">"peachy"</span> <span class="op">=</span> <span class="st">"#f9785e"</span>, </span>
+<span>  </span>
+<span>  <span class="co"># row 4</span></span>
+<span>  <span class="st">"blush"</span> <span class="op">=</span> <span class="st">"#eb8d83"</span>, </span>
+<span>  <span class="st">"darkcherry"</span> <span class="op">=</span> <span class="st">"#852f29"</span>, </span>
+<span>  <span class="st">"darkplum"</span> <span class="op">=</span> <span class="st">"#4f2f32"</span>, </span>
+<span>  <span class="st">"darkmaroon"</span> <span class="op">=</span> <span class="st">"#5e3934"</span>, </span>
+<span>  <span class="st">"lilac"</span> <span class="op">=</span> <span class="st">"#a8b9da"</span>, </span>
+<span>  </span>
+<span>  <span class="co"># row 5</span></span>
+<span>  <span class="st">"vintageviolet"</span> <span class="op">=</span> <span class="st">"#77839b"</span> <span class="co"># 9th region color</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-13-1.png" width="480"></p>
+<p>The miscellaneous palette is also available as palette function to
+use directly in ggplot with discrete variables. See <a href="#palette-functions">Palette functions</a> on palette functions in
+general, and <a href="#miscellaneous-palette">Miscellaneous palette</a>
+on how to use this palette.</p>
+</div>
+<div class="section level4">
 <h4 id="palette-functions">Palette functions<a class="anchor" aria-label="anchor" href="#palette-functions"></a>
 </h4>
-<p>Palettes as functions can be used directly in your ggplot code using,
-e.g. <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual()</a></code> or
+<p>Palette functions generate a list of colors and can be used directly
+in your ggplot code using, e.g. <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual()</a></code> or
 <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual()</a></code>, depending on how you mapped your
 aesthetics.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p4</span> <span class="op">+</span> </span>
-<span>  <span class="co"># scale_color_manual(values = dcfs_palette()) + </span></span>
+<div class="section level5">
+<h5 id="region-palettes">Region palettes<a class="anchor" aria-label="anchor" href="#region-palettes"></a>
+</h5>
+<p>Region palettes map each region identifier to a specific color.
+Region identifiers can be either names or numbers. Let’s take a
+look:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="../reference/dcfs_palette.html">dcfs_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
-<p>This works because we mapped the color aesthetics to the variable
-‘region_name_DCFS’ (as you can see in the legend title). Any region
-color palette will assign the colors to the region name as opposed to
-the region number by default. Let’s take a quick look at the variables
-in <code>dcfs_regions</code> to understand the difference between
-‘region_DCFS’ and ‘region_name_DCFS’.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     filter, lag</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dcfs_regions</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 9</span></span>
-<span><span class="co">#&gt; Columns: 4</span></span>
-<span><span class="co">#&gt; $ region_DCFS      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9</span></span>
-<span><span class="co">#&gt; $ region_name_DCFS <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Orleans", "Baton Rouge", "Covington", "Thibodaux", "…</span></span>
-<span><span class="co">#&gt; $ geometry         <span style="color: #949494; font-style: italic;">&lt;GEOMETRY [°]&gt;</span> MULTIPOLYGON (((-89.95041 2..., POLYGON ((-91.17614 3…</span></span>
-<span><span class="co">#&gt; $ center           <span style="color: #949494; font-style: italic;">&lt;POINT [°]&gt;</span> POINT (-89.73721 29.68826), POINT (-91.31832…</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-14-1.png" width="768"></p>
+<p>Similarly to the color aesthetics, we can map fill:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p2</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="../reference/dcfs_palette.html">dcfs_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span>void <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-15-1.png" width="480"></p>
+<p>This works because we mapped the color/fill aesthetics to the
+variable ‘region_name_DCFS’ (as you can see in the legend title). Any
+region color palette will assign the colors to the region name as
+opposed to the region number by default. In our object
+<code>dcfs_regions</code>, we have the numeric variable ‘region_DCFS’
+and the character variable ‘region_name_DCFS’. Other region variables in
+<code>parishes</code> and <code>louisiana</code> follow the same
+pattern.</p>
 <p>If you prefer to map color to the region number instead, you’ll need
 to convert the region’s numeric value to a discrete value (e.g., by
 using <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code>) and specify the use of region number rather
 than region name inside <code><a href="../reference/dcfs_palette.html">dcfs_palette()</a></code> via the ‘region’
 argument. In this step, we can also darken the color for region 9 -
 Monroe using the ‘darken’ argument.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">estimate</span>, y <span class="op">=</span> <span class="va">region_name_DCFS</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">region_DCFS</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">estimate</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">region_name_DCFS</span>,</span>
+<span>    color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">region_DCFS</span><span class="op">)</span> <span class="co"># note the use of factor()</span></span>
+<span>    <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/number.html" class="external-link">cut_short_scale</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># scale_color_manual(values = dcfs_palette(region = "number", darken = 1)) +</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="../reference/dcfs_palette.html">dcfs_palette</a></span><span class="op">(</span></span>
+<span>    region <span class="op">=</span> <span class="st">"number"</span>, <span class="co"># use "number" instead of default "name"</span></span>
+<span>    darken <span class="op">=</span> <span class="fl">1</span> <span class="co"># darken by 1</span></span>
+<span>    <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Louisiana population in 2023"</span>, </span>
 <span>       subtitle <span class="op">=</span> <span class="st">"Parish population by DCFS region"</span>, </span>
 <span>       caption <span class="op">=</span> <span class="st">"Source: U.S. Census, 2023 ACS 5-Year estimates, Table B01003"</span>,</span>
@@ -239,10 +301,113 @@ Monroe using the ‘darken’ argument.</p>
 <span>       x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
+<p>Our legend title is now “factor(region_DCFS)” and the colors are
+mapped to the numeric counterpart of our region names.</p>
+</div>
+<div class="section level5">
+<h5 id="gradient-palettes">Gradient palettes<a class="anchor" aria-label="anchor" href="#gradient-palettes"></a>
+</h5>
+<p>Gradient palettes, just like the other palettes in blancocentR,
+generate colors. The default number of colors is 7 but you can adjust
+the number of colors using the ‘n’ argument. Because the function
+generates a number of colors, we can’t use it directly for continuous
+variables, only for discrete variables. However, we can make use of
+<code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient()</a></code> by defining the ‘low’ and ‘high’
+arguments like so:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">estimate</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient</a></span><span class="op">(</span></span>
+<span>  low <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, </span>
+<span>  high <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">7</span><span class="op">]</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-17-1.png" width="480"></p>
+<p>In the previous example, we use the 7th color as ‘high’ because we
+didn’t define the number of colors the palette generates. By default,
+this number is 7, so the 7th color is the lightest color. We can achieve
+the exact same result by generating n colors and selecting the nth value
+as ‘high’, e.g. using n = 2:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">estimate</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient</a></span><span class="op">(</span></span>
+<span>  low <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, </span>
+<span>  high <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-18-1.png" width="480"></p>
+<p><em>Note:</em> You could also adjust the base color used to generate
+the palette with the ‘base’ argument, but that’s not recommended. Under
+the hood, the function uses
+<code><a href="https://rdrr.io/pkg/monochromeR/man/generate_palette.html" class="external-link">monochromeR::generate_palette()</a></code><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See {monochromeR} on &lt;a href="https://github.com/cararthompson/monochromeR" title="Cara R Thompson (2021). monochromeR: A package for creating monochrome colour palettes and easily converting rgba values to hex codes." class="external-link"&gt;github&lt;/a&gt;.&lt;/p&gt;'><sup>1</sup></a>.</p>
+<p>Here are all gradient palettes:</p>
+<p><code><a href="../reference/la_gradient_palette.html">la_gradient_palette()</a></code></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-19-1.png" width="480"></p>
+<p><code><a href="../reference/us_gradient_palette.html">us_gradient_palette()</a></code></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/us_gradient_palette.html">us_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-20-1.png" width="480"></p>
+<p><code><a href="../reference/ur_gradient_palette.html">ur_gradient_palette()</a></code></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/ur_gradient_palette.html">ur_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-21-1.png" width="480"></p>
+<p><code><a href="../reference/ru_gradient_palette.html">ru_gradient_palette()</a></code></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/ru_gradient_palette.html">ru_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-22-1.png" width="480"></p>
+</div>
+<div class="section level5">
+<h5 id="miscellaneous-palette">Miscellaneous palette<a class="anchor" aria-label="anchor" href="#miscellaneous-palette"></a>
+</h5>
+<p>You can access the miscellaneous colors in two ways: 1) via printing
+the list of named colors and/or individual directly to your console (see
+<a href="#miscellaneous-colors">Miscellaneous colors</a>), or 2) via the
+function <code><a href="../reference/misc_palette.html">misc_palette()</a></code>. Just like other palette functions
+in blancocentR, this function will generate colors, 21 to be exact. You
+can use these colors directly with ggplot using
+<code>scale_*_manual(values = misc_palette())</code>, depending on how
+you have mapped your aesthetics. This will work as long as 1) your
+variable is discrete, and 2) your variable doesn’t exceed 21 distinct
+levels<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;If your variable does exceed 21 distinct levels, you
+really shouldn’t use colors to distinguish them!&lt;/p&gt;"><sup>2</sup></a>.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="../reference/misc_palette.html">misc_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"These are colors from the Miscellaneous palette!"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-23-1.png" width="768"></p>
 </div>
 </div>
 </div>
+<div class="section level3">
+<h3 id="show_cvd">show_cvd()<a class="anchor" aria-label="anchor" href="#show_cvd"></a>
+</h3>
+<p>Wait, what about this other function we haven’t talked about?
+<code><a href="../reference/show_cvd.html">show_cvd()</a></code> is a helper function that allows you to quickly
+compare what your selected colors might look like to someone with color
+vision deficiency, or if you print them in gray-scale.</p>
+<p>The output shows 5 rows:</p>
+<ol style="list-style-type: decimal">
+<li><p>your original input colors</p></li>
+<li><p>deuteranope simulation (green cone cells defective)</p></li>
+<li><p>protanope simulation (red cone cells defective)</p></li>
+<li><p>tritanope simulation (blue cone cells defective)</p></li>
+<li><p>desaturated (gray-scale)</p></li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/show_cvd.html">show_cvd</a></span><span class="op">(</span><span class="fu"><a href="../reference/misc_palette.html">misc_palette</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-24-1.png" width="480"></p>
+<p><em>Note:</em> Under the hood, the function uses
+<code><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">scales::show_col()</a></code><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See the {scales} &lt;a href="https://scales.r-lib.org" title="Wickham H, Pedersen T, Seidel D (2023). scales: Scale Functions for Visualization. R package version 1.3.0." class="external-link"&gt;documentation
+site&lt;/a&gt;.&lt;/p&gt;'><sup>3</sup></a> and functions from the {colorspace}<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See the {colorspace} &lt;a href="https://colorspace.r-forge.r-project.org" title="Zeileis A, Fisher JC, Hornik K, Ihaka R, McWhite CD, Murrell P, Stauffer R, Wilke CO (2020). “colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes.” Journal of Statistical Software, 96(1), 1–49. doi:10.18637/jss.v096.i01." class="external-link"&gt;documentation
+website&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a>
+package.</p>
+</div>
+</div>
+
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
