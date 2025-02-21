@@ -7,11 +7,6 @@ light_text <- "#575E66"
 mid_gray <- "#94989D"
 light_gray <- "#D1D3D5"
 
-# export(dark_text)
-# export(light_text)
-# export(mid_gray)
-# export(light_gray)
-
 
 
 # Custom ------------------------------------------------------------------
@@ -21,13 +16,6 @@ col_la <- "#4776aa" # Louisiana blue
 col_us <- "#711F30" # U.S. red
 col_ur <- "#d24a41" # misc_pal$strawberry
 col_ru <- "#23464f" # misc_pal$darkteal
-
-
-# export(ull_red)
-# export(col_la)
-# export(col_us)
-# export(col_ur)
-# export(col_ru)
 
 
 
@@ -337,6 +325,7 @@ de_palette <- function(region = "name", darken = 0) {
 #' Create a color palette with 21 colors. Please note that the shade 'vintageviolet'
 #' ("#77839b") is used in some regional color palettes (e.g., DCFS, LDH).
 #'
+#' @param n Number of colors generated. Default = 21.
 #' @return A character of length 21, a list of length 21.
 #' @export
 #'
@@ -345,7 +334,7 @@ de_palette <- function(region = "name", darken = 0) {
 #' misc_palette()
 #' misc_palette(get_list = TRUE)
 #' }
-misc_palette <- function() {
+misc_palette <- function(n = 21) {
   misc_pal_cols <- c(
     "#243e56",
     "#62c3dc",
@@ -370,7 +359,7 @@ misc_palette <- function() {
     "#a8b9da"
   )
 
-  return(misc_pal_cols)
+  return(misc_pal_cols[1:n])
 }
 
 

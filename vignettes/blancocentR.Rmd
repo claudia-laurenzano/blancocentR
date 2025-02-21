@@ -60,10 +60,11 @@ dcfs_regions <- get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
 Our sf object has changed from 64 observations (one for each parish) to 9 observations (one for each DCFS region). Let's plot a map!
 
 ```{r}
-p3 <- ggplot(dcfs_regions) + 
+ggplot(dcfs_regions) + 
   geom_sf(data = louisiana) + # parish boundaries
   geom_sf(lwd = 0.7, fill = NA) + # region boundaries
   geom_sf_text(aes(label = region_name_DCFS)) # region names
+
 ```
 
 ## The theme
@@ -74,8 +75,10 @@ Let's create some additional example plots to use throughout this tutorial.
 
 ```{r}
 library(scales)
-p4 <- ggplot(louisiana) + 
-  geom_point(aes(x = estimate, y = region_name_DCFS, color = region_name_DCFS)) +
+p3 <- ggplot(louisiana) + 
+  geom_point(
+    aes(x = estimate, y = region_name_DCFS, color = region_name_DCFS),
+    size = 3) +
   scale_x_continuous(labels = label_number(scale_cut = cut_short_scale())) +
   labs(title = "Louisiana population in 2023", 
        subtitle = "Parish population by DCFS region", 
@@ -87,7 +90,7 @@ p4 <- ggplot(louisiana) +
 Let's see how plot p4 looks when we add our theme:
 
 ```{r}
-p4 + 
+p3 + 
   theme_bc()
 ```
 
@@ -96,14 +99,14 @@ p4 +
 If you like, you can add grid lines. For p4, we can add x grid lines. It wouldn't make much sense to add y grid lines, but you can if you want to using `theme_bc(grid_y = TRUE)`.
 
 ```{r}
-p4 + labs(title = "Now with grid lines!") + 
+p3 + labs(title = "Now with grid lines!") + 
   theme_bc(grid_x = TRUE) + 
   theme(legend.position = "none") # remove legend
 ```
 
 ### Void
 
-For maps, I recommend taking advantage of the 'void' argument to remove all axes.
+Most maps look better without any axes. We can take advantage of the 'void' argument to remove all axes in one simple step.
 
 ```{r}
 p1 + 
@@ -116,32 +119,118 @@ p1 +
 
 This package includes several color palettes, list of named colors, and individual colors. Please note that accessing some of the colors may be different when you use this package from your experience sourcing colors from R scripts.
 
-### Palette functions
+### Named colors
 
-Palettes as functions can be used directly in your ggplot code using, e.g. `scale_color_manual()` or `scale_fill_manual()`, depending on how you mapped your aesthetics.
+Named colors are accessible once you've loaded this package without showing up in your environment.
+
+```{r echo=FALSE}
+library(tidyr)
+named_colors <- tribble(
+  ~ order, ~ name, ~ color,
+  1, "dark_text", "#1A242F",
+  2, "light_text", "#575E66",
+  3, "mid_gray", "#94989D",
+  4, "light_gray", "#D1D3D5",
+  
+  5, "ull_red", "#a00b0b", 
+  6, "col_la", "#4776aa" , 
+  7, "col_us", "#711F30" , 
+  8, "col_ur", "#d24a41" , 
+  9, "col_ru", "#23464f"
+)
+
+ggplot(named_colors, aes(x = 1, y = reorder(name, -order), fill = color)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  scale_fill_identity() +
+  theme_bc(void = TRUE) +
+  theme(axis.text.y = element_text())
+```
+
+### Miscellaneous colors
+
+Miscellaneous colors are still available by name. You can call any specific color from this collection by naming it specifically, e.g., `misc_pal$jadegreen`, or print the whole list by calling `misc_pal`.
 
 ```{r}
-p4 + 
-  # scale_color_manual(values = dcfs_palette()) + 
+library(scales)
+
+list(
+  # row 1
+  "midnight" = "#243e56", 
+  "mint" = "#bcefde", 
+  "berry" = "#8f555a", 
+  "sand" = "#e8d5a6", 
+  "mustard" = "#ae9837", 
+  
+  # row2
+  "charcoal" = "#3c424e", 
+  "jadegreen" = "#4e7a59", 
+  "pastelgreen" = "#7fc791", 
+  "deepforest" = "#253a2a", 
+  "darkteal" = "#23464f", # urban
+  
+  # row 3
+  "cloudfree" = "#62c3dc", 
+  "midblue" = "#5ea2e3", 
+  "silver" = "#94b3b0", 
+  "strawberry" = "#d24a41", # rural
+  "peachy" = "#f9785e", 
+  
+  # row 4
+  "blush" = "#eb8d83", 
+  "darkcherry" = "#852f29", 
+  "darkplum" = "#4f2f32", 
+  "darkmaroon" = "#5e3934", 
+  "lilac" = "#a8b9da", 
+  
+  # row 5
+  "vintageviolet" = "#77839b" # 9th region color
+)
+
+show_col(paste(misc_pal))
+```
+
+The miscellaneous palette is also available as palette function to use directly in ggplot with discrete variables. See [Palette functions] on palette functions in general, and [Miscellaneous palette] on how to use this palette.
+
+### Palette functions
+
+Palette functions generate a list of colors and can be used directly in your ggplot code using, e.g. `scale_color_manual()` or `scale_fill_manual()`, depending on how you mapped your aesthetics.
+
+#### Region palettes
+
+Region palettes map each region identifier to a specific color. Region identifiers can be either names or numbers. Let's take a look:
+
+```{r}
+p3 + 
+  scale_color_manual(values = dcfs_palette()) + 
   theme_bc() + 
   theme(legend.position = "right")
 ```
 
-This works because we mapped the color aesthetics to the variable 'region_name_DCFS' (as you can see in the legend title). Any region color palette will assign the colors to the region name as opposed to the region number by default. Let's take a quick look at the variables in `dcfs_regions` to understand the difference between 'region_DCFS' and 'region_name_DCFS'.
+Similarly to the color aesthetics, we can map fill:
 
 ```{r}
-library(dplyr)
-
-glimpse(dcfs_regions)
+p2 + 
+  scale_fill_manual(values = dcfs_palette()) + 
+  theme_bc(void = TRUE) + 
+  theme(legend.position = "right")
 ```
+
+This works because we mapped the color/fill aesthetics to the variable 'region_name_DCFS' (as you can see in the legend title). Any region color palette will assign the colors to the region name as opposed to the region number by default. In our object `dcfs_regions`, we have the numeric variable 'region_DCFS' and the character variable 'region_name_DCFS'. Other region variables in `parishes` and `louisiana` follow the same pattern.
 
 If you prefer to map color to the region number instead, you'll need to convert the region's numeric value to a discrete value (e.g., by using `factor()`) and specify the use of region number rather than region name inside `dcfs_palette()` via the 'region' argument. In this step, we can also darken the color for region 9 - Monroe using the 'darken' argument.
 
 ```{r}
 ggplot(louisiana) + 
-  geom_point(aes(x = estimate, y = region_name_DCFS, color = factor(region_DCFS))) +
+  geom_point(aes(
+    x = estimate,
+    y = region_name_DCFS,
+    color = factor(region_DCFS) # note the use of factor()
+    )) +
   scale_x_continuous(labels = label_number(scale_cut = cut_short_scale())) +
-  # scale_color_manual(values = dcfs_palette(region = "number", darken = 1)) +
+  scale_color_manual(values = dcfs_palette(
+    region = "number", # use "number" instead of default "name"
+    darken = 1 # darken by 1
+    )) +
   labs(title = "Louisiana population in 2023", 
        subtitle = "Parish population by DCFS region", 
        caption = "Source: U.S. Census, 2023 ACS 5-Year estimates, Table B01003",
@@ -150,3 +239,99 @@ ggplot(louisiana) +
    theme_bc() +
    theme(legend.position = "right")
 ```
+
+Our legend title is now "factor(region_DCFS)" and the colors are mapped to the numeric counterpart of our region names.
+
+#### Gradient palettes
+
+Gradient palettes, just like the other palettes in blancocentR, generate colors. The default number of colors is 7 but you can adjust the number of colors using the 'n' argument. Because the function generates a number of colors, we can't use it directly for continuous variables, only for discrete variables. However, we can make use of `scale_fill_gradient()` by defining the 'low' and 'high' arguments like so:
+
+```{r}
+ggplot(louisiana) + 
+  geom_sf(aes(fill = estimate)) + 
+  scale_fill_gradient(
+  low = la_gradient_palette()[1], 
+  high = la_gradient_palette()[7]
+  )
+```
+
+In the previous example, we use the 7th color as 'high' because we didn't define the number of colors the palette generates. By default, this number is 7, so the 7th color is the lightest color. We can achieve the exact same result by generating n colors and selecting the nth value as 'high', e.g. using n = 2:
+
+```{r}
+ggplot(louisiana) + 
+  geom_sf(aes(fill = estimate)) + 
+  scale_fill_gradient(
+  low = la_gradient_palette()[1], 
+  high = la_gradient_palette(n = 2)[2]
+  )
+```
+
+*Note:* You could also adjust the base color used to generate the palette with the 'base' argument, but that's not recommended. Under the hood, the function uses `monochromeR::generate_palette()`[^1].
+
+[^1]: See {monochromeR} on [github](https://github.com/cararthompson/monochromeR "Cara R Thompson (2021). monochromeR: A package for creating monochrome colour palettes and easily converting rgba values to hex codes.").
+
+Here are all gradient palettes:
+
+`la_gradient_palette()`
+
+```{r}
+show_col(paste(la_gradient_palette()))
+```
+
+`us_gradient_palette()`
+
+```{r}
+show_col(paste(us_gradient_palette()))
+```
+
+`ur_gradient_palette()`
+
+```{r}
+show_col(paste(ur_gradient_palette()))
+```
+
+`ru_gradient_palette()`
+
+```{r}
+show_col(paste(ru_gradient_palette()))
+```
+
+#### Miscellaneous palette
+
+You can access the miscellaneous colors in two ways: 1) via printing the list of named colors and/or individual directly to your console (see [Miscellaneous colors]), or 2) via the function `misc_palette()`. Just like other palette functions in blancocentR, this function will generate colors, 21 to be exact. You can use these colors directly with ggplot using `scale_*_manual(values = misc_palette())`, depending on how you have mapped your aesthetics. This will work as long as 1) your variable is discrete, and 2) your variable doesn't exceed 21 distinct levels[^2].
+
+[^2]: If your variable does exceed 21 distinct levels, you really shouldn't use colors to distinguish them!
+
+```{r}
+p3 + 
+  scale_color_manual(values = misc_palette()) + 
+  theme_bc() + 
+  theme(legend.position = "none") +
+  labs(subtitle = "These are colors from the Miscellaneous palette!")
+```
+
+## show_cvd()
+
+Wait, what about this other function we haven't talked about? `show_cvd()` is a helper function that allows you to quickly compare what your selected colors might look like to someone with color vision deficiency, or if you print them in gray-scale.
+
+The output shows 5 rows:
+
+1.  your original input colors
+
+2.  deuteranope simulation (green cone cells defective)
+
+3.  protanope simulation (red cone cells defective)
+
+4.  tritanope simulation (blue cone cells defective)
+
+5.  desaturated (gray-scale)
+
+```{r}
+show_cvd(misc_palette(n = 5))
+```
+
+*Note:* Under the hood, the function uses `scales::show_col()`[^3] and functions from the {colorspace}[^4] package.
+
+[^3]: See the {scales} [documentation site](https://scales.r-lib.org "Wickham H, Pedersen T, Seidel D (2023). scales: Scale Functions for Visualization. R package version 1.3.0.").
+
+[^4]: See the {colorspace} [documentation website](https://colorspace.r-forge.r-project.org "Zeileis A, Fisher JC, Hornik K, Ihaka R, McWhite CD, Murrell P, Stauffer R, Wilke CO (2020). “colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes.” Journal of Statistical Software, 96(1), 1–49. doi:10.18637/jss.v096.i01.").
