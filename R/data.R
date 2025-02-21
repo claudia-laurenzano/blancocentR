@@ -1,7 +1,7 @@
 #' Louisiana parish and region data
 #'
 #' Louisiana's 64 parishes and FIPS codes and region designations according
-#' to different state agencies and organizations
+#' to different state agencies and organizations.
 #'
 #' @format ## `parishes`
 #' A data frame with 64 rows and 17 columns:
@@ -21,7 +21,7 @@
 #' Louisiana parish and region data with geometry
 #'
 #' Louisiana's 64 parishes and FIPS codes, region designations according
-#' to different state agencies and organizations, parish geometry, and parish centers
+#' to different state agencies and organizations, parish geometry, and parish centers.
 #'
 #' @format ## `louisiana`
 #' A data frame with 64 rows and 17 columns:

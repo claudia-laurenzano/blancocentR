@@ -11,6 +11,7 @@ A ggplot2 theme for a cohesive look across Blanco Center visualizations. Color p
 Useful links:
 \itemize{
   \item \url{https://github.com/claudia-laurenzano/blancocentR/tree/main}
+  \item \url{https://claudia-laurenzano.github.io/blancocentR/}
   \item Report bugs at \url{https://github.com/claudia-laurenzano/blancocentR/issues}
 }
 

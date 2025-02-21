@@ -46,10 +46,10 @@ col_ru <- "#23464f" # misc_pal$darkteal
 #'
 #' @examples
 #' \dontrun{
-#' la_gradient_pal()
-#' la_gradient(n = 5)
+#' la_gradient_palette()
+#' la_gradient_palette(n = 5)
 #' }
-la_gradient_pal <- function(base = "#1C2F43", n = 7) {
+la_gradient_palette <- function(base = "#1C2F43", n = 7) {
   la_gradient <- monochromeR::generate_palette(
     base,
     blend_colour = "white",
@@ -71,10 +71,10 @@ la_gradient_pal <- function(base = "#1C2F43", n = 7) {
 #'
 #' @examples
 #' \dontrun{
-#' us_gradient_pal()
-#' us_gradient(n = 5)
+#' us_gradient_palette()
+#' us_gradient_palette(n = 5)
 #' }
-us_gradient_pal <- function(base = "#5A1826", n = 7) {
+us_gradient_palette <- function(base = "#5A1826", n = 7) {
   us_gradient <- monochromeR::generate_palette(
     base,
     blend_colour = "white",
@@ -96,10 +96,10 @@ us_gradient_pal <- function(base = "#5A1826", n = 7) {
 #'
 #' @examples
 #' \dontrun{
-#' ur_gradient_pal()
-#' ur_gradient(n = 5)
+#' ur_gradient_palette()
+#' ur_gradient_palette(n = 5)
 #' }
-ur_gradient_pal <- function(base = "#d24a41", n = 7) {
+ur_gradient_palette <- function(base = "#d24a41", n = 7) {
   ur_gradient <- monochromeR::generate_palette(
     base,
     "go_both_ways",
@@ -121,10 +121,10 @@ ur_gradient_pal <- function(base = "#d24a41", n = 7) {
 #'
 #' @examples
 #' \dontrun{
-#' ru_gradient_pal()
-#' ru_gradient(n = 5)
+#' ru_gradient_palette()
+#' ru_gradient_palette(n = 5)
 #' }
-ru_gradient_pal <- function(base = "#23464f", n = 7) {
+ru_gradient_palette <- function(base = "#23464f", n = 7) {
   ru_gradient <- monochromeR::generate_palette(
     base,
     "go_both_ways",
@@ -152,10 +152,10 @@ ru_gradient_pal <- function(base = "#23464f", n = 7) {
 #'
 #' @examples
 #' \dontrun{
-#' dcfs_pal()
-#' dcfs_pal(region = "number", darken = 1)
+#' dcfs_palette()
+#' dcfs_palette(region = "number", darken = 1)
 #' }
-dcfs_pal <- function(region = "name", darken = 0) {
+dcfs_palette <- function(region = "name", darken = 0) {
 
   if (!(darken %in% seq(0, 2, 1))) {
     stop("darken must be a natural number between 0 and 2.")
@@ -217,10 +217,10 @@ dcfs_pal <- function(region = "name", darken = 0) {
 #'
 #' @examples
 #' \dontrun{
-#' ldh_pal()
-#' ldh_pal(region = "number", darken = 1)
+#' ldh_palette()
+#' ldh_palette(region = "number", darken = 1)
 #' }
-ldh_pal <- function(region = "name", darken = 0) {
+ldh_palette <- function(region = "name", darken = 0) {
 
   if (!(darken %in% seq(0, 2, 1))) {
     stop("darken must be a natural number between 0 and 2.")
@@ -269,10 +269,11 @@ ldh_pal <- function(region = "name", darken = 0) {
 
 ## DE --------------------------------------------------------------------
 
-#' Color palette for Digital Equity regions
+#' Color palette for Digital Equity regions (LAPDD)
 #'
 #' Colors are defined by region number or region name. The shade for region
 #' 8 - North Delta can be darkened for small area geoms (e.g., geom_point()).
+#' Regions via the Louisiana Association of Planning and Development District.
 #'
 #' @param region System used to identify regions: 'number' or 'name'.
 #' @param darken Factor by which the shade for region 8 - 8 - North Delta gets darkened. Default = 0.
@@ -282,10 +283,10 @@ ldh_pal <- function(region = "name", darken = 0) {
 #'
 #' @examples
 #' \dontrun{
-#' de_pal()
-#' de_pal(region = "number", darken = 1)
+#' de_palette()
+#' de_palette(region = "number", darken = 1)
 #' }
-de_pal <- function(region = "name", darken = 0) {
+de_palette <- function(region = "name", darken = 0) {
 
   if (!(darken %in% seq(0, 2, 1))) {
     stop("darken must be a natural number between 0 and 2.")
@@ -333,7 +334,7 @@ de_pal <- function(region = "name", darken = 0) {
 
 #' Color palette for miscellaneous uses
 #'
-#' Create a color palette with 21 colors. Please note that misc_pal$vintageviolet
+#' Create a color palette with 21 colors. Please note that the shade 'vintageviolet'
 #' ("#77839b") is used in some regional color palettes (e.g., DCFS, LDH).
 #'
 #' @return A character of length 21, a list of length 21.
@@ -341,10 +342,10 @@ de_pal <- function(region = "name", darken = 0) {
 #'
 #' @examples
 #' \dontrun{
-#' misc_pal()
-#' misc_pal(get_list = TRUE)
+#' misc_palette()
+#' misc_palette(get_list = TRUE)
 #' }
-misc_pal <- function() {
+misc_palette <- function() {
   misc_pal_cols <- c(
     "#243e56",
     "#62c3dc",

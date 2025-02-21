@@ -27,6 +27,6 @@ parishes
 }
 \description{
 Louisiana's 64 parishes and FIPS codes and region designations according
-to different state agencies and organizations
+to different state agencies and organizations.
 }
 \keyword{datasets}

@@ -35,6 +35,6 @@ louisiana
 }
 \description{
 Louisiana's 64 parishes and FIPS codes, region designations according
-to different state agencies and organizations, parish geometry, and parish centers
+to different state agencies and organizations, parish geometry, and parish centers.
 }
 \keyword{datasets}
