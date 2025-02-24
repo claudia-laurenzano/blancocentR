@@ -5,29 +5,7 @@
 \alias{misc_pal}
 \title{Miscellaneous Palette}
 \format{
-A character vector with named color values:
-\describe{
-\item{midnight}{"#243e56"}
-\item{mint}{"#bcefde"}
-\item{berry}{"#8f555a"}
-\item{sand}{"#e8d5a6"}
-\item{mustard}{"#ae9837"}
-\item{charcoal}{"#3c424e"}
-\item{jadegreen}{"#4e7a59"}
-\item{pastelgreen}{"#7fc791"}
-\item{deepforest}{"#253a2a"}
-\item{darkteal; also used for rural}{"#23464f"}
-\item{cloudfree}{"#62c3dc"}
-\item{midblue}{"#5ea2e3"}
-\item{silver}{"#94b3b0"}
-\item{strawberry; also used for urban}{"#d24a41"}
-\item{peachy}{"#f9785e"}
-\item{blush}{"#eb8d83"}
-\item{darkcherry}{"#852f29"}
-\item{darkplum}{"#4f2f32"}
-\item{darkmaroon}{"#5e3934"}
-\item{lilac}{"#a8b9da"}
-\item{vintageviolet; also used as region color in some palettes}{"#77839b"}
+A character vector with named color values.
 }
 \usage{
 misc_pal
