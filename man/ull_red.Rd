@@ -3,54 +3,17 @@
 \docType{data}
 \name{ull_red}
 \alias{ull_red}
-\alias{la_gradient_palette}
 \title{UL red}
 \format{
 A character string containing the hex code for UL red: "#a00b0b".
-
-A character string containing the hex code for Louisiana blue: "#4776aa".
-U.S. red
-
-Named color used for U.S.-related data.
-
-A character string containing the hex code for U.S. red: "#711F30".
-Urban
-
-Named color used for urban data. Also included in the miscellaneous palette.
-
-A character string containing the hex code for urban: "#d24a41".
-Rural
-
-Named color used for rural data. Also included in the miscellaneous palette.
-
-A character string containing the hex code for rural: "#23464f".
-Color gradient palette for Louisiana
-
-Create a gradient color for Louisiana.
 }
 \source{
 \href{https://louisiana.edu/web/tutorials-resources/web-style-guide/approved-web-colors}{UL approved web colors}
-Louisiana blue
-
-Named color used for Louisiana-related data.
 }
 \usage{
-la_gradient_palette(base = "#1C2F43", n = 7)
-}
-\arguments{
-\item{base}{Base color to be blended with "white". Default = "#1C2F43".}
-
-\item{n}{Number of shades in the palette. Default = 7.}
-}
-\value{
-A character object.
+ull_red
 }
 \description{
 Named color used for UL Vermillion red, used as title color in theme_bc().
 }
-\examples{
-\dontrun{
-la_gradient_palette()
-la_gradient_palette(n = 5)
-}
-}
+\keyword{datasets}

@@ -3,28 +3,12 @@
 \docType{data}
 \name{dark_text}
 \alias{dark_text}
-\alias{ull_red}
 \title{Dark text}
 \format{
 A character string containing the hex code for dark text: "#1A242F".
-Light text
-
-Named color used for light text, used for axis lines, ticks, and all text in theme_bc() unless otherwise specified.
-
-A character string containing the hex code for Louisiana blue: "#575E66".
-Mid gray
-
-Named color used for de-emphasized data.
-
-A character string containing the hex code for mid gray: "#94989D".
-Light gray
-
-Named color used for de-emphasized data and background plot elements.
-
-A character string containing the hex code for Louisiana blue: "#D1D3D5".
 }
 \usage{
-ull_red
+dark_text
 }
 \description{
 Named color used for dark text, used for axis, legend, and facet titles in theme_bc().

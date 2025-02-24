@@ -2,17 +2,14 @@
 
 # Grays -------------------------------------------------------------------
 
-dark_text <- "#1A242F"
-light_text <- "#575E66"
-mid_gray <- "#94989D"
-light_gray <- "#D1D3D5"
-
 #' Dark text
 #'
 #' Named color used for dark text, used for axis, legend, and facet titles in theme_bc().
 #' @docType data
 #' @name dark_text
 #' @format A character string containing the hex code for dark text: "#1A242F".
+dark_text <- "#1A242F"
+
 
 #' Light text
 #'
@@ -20,6 +17,7 @@ light_gray <- "#D1D3D5"
 #' @docType data
 #' @name light_text
 #' @format A character string containing the hex code for Louisiana blue: "#575E66".
+light_text <- "#575E66"
 
 #' Mid gray
 #'
@@ -27,6 +25,7 @@ light_gray <- "#D1D3D5"
 #' @docType data
 #' @name mid_gray
 #' @format A character string containing the hex code for mid gray: "#94989D".
+mid_gray <- "#94989D"
 
 #' Light gray
 #'
@@ -34,15 +33,11 @@ light_gray <- "#D1D3D5"
 #' @docType data
 #' @name light_gray
 #' @format A character string containing the hex code for Louisiana blue: "#D1D3D5".
+light_gray <- "#D1D3D5"
+
 
 
 # Custom ------------------------------------------------------------------
-
-ull_red <- "#a00b0b" # UL red
-col_la <- "#4776aa" # Louisiana blue
-col_us <- "#711F30" # U.S. red
-col_ur <- "#d24a41" # misc_pal$strawberry
-col_ru <- "#23464f" # misc_pal$darkteal
 
 #' UL red
 #'
@@ -51,6 +46,7 @@ col_ru <- "#23464f" # misc_pal$darkteal
 #' @name ull_red
 #' @format A character string containing the hex code for UL red: "#a00b0b".
 #' @source [UL approved web colors](https://louisiana.edu/web/tutorials-resources/web-style-guide/approved-web-colors)
+ull_red <- "#a00b0b" # UL red
 
 #' Louisiana blue
 #'
@@ -58,6 +54,7 @@ col_ru <- "#23464f" # misc_pal$darkteal
 #' @docType data
 #' @name col_la
 #' @format A character string containing the hex code for Louisiana blue: "#4776aa".
+col_la <- "#4776aa" # Louisiana blue
 
 #' U.S. red
 #'
@@ -65,6 +62,7 @@ col_ru <- "#23464f" # misc_pal$darkteal
 #' @docType data
 #' @name col_us
 #' @format A character string containing the hex code for U.S. red: "#711F30".
+col_us <- "#711F30" # U.S. red
 
 #' Urban
 #'
@@ -72,6 +70,7 @@ col_ru <- "#23464f" # misc_pal$darkteal
 #' @docType data
 #' @name col_ur
 #' @format A character string containing the hex code for urban: "#d24a41".
+col_ur <- "#d24a41" # misc_pal$strawberry
 
 #' Rural
 #'
@@ -79,6 +78,7 @@ col_ru <- "#23464f" # misc_pal$darkteal
 #' @docType data
 #' @name col_ru
 #' @format A character string containing the hex code for rural: "#23464f".
+col_ru <- "#23464f" # misc_pal$darkteal
 
 
 
