@@ -1,4 +1,5 @@
 url: https://claudia-laurenzano.github.io/blancocentR/
 template:
   bootstrap: 5
+  bootswatch: yeti
 

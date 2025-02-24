@@ -31,7 +31,7 @@ pak::pak("claudia-laurenzano/blancocentR")
 
 ## Documentation
 
-For detailed package documentation, please visit the [pkgdown site](https://claudia-laurenzano.github.io/blancocentR.io)
+For detailed package documentation, please visit the [pkgdown site](https://claudia-laurenzano.github.io/blancocentR/)
 
 ## Example
 
