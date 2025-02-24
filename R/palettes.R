@@ -7,6 +7,33 @@ light_text <- "#575E66"
 mid_gray <- "#94989D"
 light_gray <- "#D1D3D5"
 
+#' Dark text
+#'
+#' Named color used for dark text, used for axis, legend, and facet titles in theme_bc().
+#' @docType data
+#' @name dark_text
+#' @format A character string containing the hex code for dark text: "#1A242F".
+
+#' Light text
+#'
+#' Named color used for light text, used for axis lines, ticks, and all text in theme_bc() unless otherwise specified.
+#' @docType data
+#' @name light_text
+#' @format A character string containing the hex code for Louisiana blue: "#575E66".
+
+#' Mid gray
+#'
+#' Named color used for de-emphasized data.
+#' @docType data
+#' @name mid_gray
+#' @format A character string containing the hex code for mid gray: "#94989D".
+
+#' Light gray
+#'
+#' Named color used for de-emphasized data and background plot elements.
+#' @docType data
+#' @name light_gray
+#' @format A character string containing the hex code for Louisiana blue: "#D1D3D5".
 
 
 # Custom ------------------------------------------------------------------
@@ -16,6 +43,42 @@ col_la <- "#4776aa" # Louisiana blue
 col_us <- "#711F30" # U.S. red
 col_ur <- "#d24a41" # misc_pal$strawberry
 col_ru <- "#23464f" # misc_pal$darkteal
+
+#' UL red
+#'
+#' Named color used for UL Vermillion red, used as title color in theme_bc().
+#' @docType data
+#' @name ull_red
+#' @format A character string containing the hex code for UL red: "#a00b0b".
+#' @source [UL approved web colors](https://louisiana.edu/web/tutorials-resources/web-style-guide/approved-web-colors)
+
+#' Louisiana blue
+#'
+#' Named color used for Louisiana-related data.
+#' @docType data
+#' @name col_la
+#' @format A character string containing the hex code for Louisiana blue: "#4776aa".
+
+#' U.S. red
+#'
+#' Named color used for U.S.-related data.
+#' @docType data
+#' @name col_us
+#' @format A character string containing the hex code for U.S. red: "#711F30".
+
+#' Urban
+#'
+#' Named color used for urban data. Also included in the miscellaneous palette.
+#' @docType data
+#' @name col_ur
+#' @format A character string containing the hex code for urban: "#d24a41".
+
+#' Rural
+#'
+#' Named color used for rural data. Also included in the miscellaneous palette.
+#' @docType data
+#' @name col_ru
+#' @format A character string containing the hex code for rural: "#23464f".
 
 
 
