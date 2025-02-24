@@ -2,7 +2,7 @@
 
 # Grays -------------------------------------------------------------------
 
-#' Dark text
+#' Color: Dark text
 #'
 #' Named color used for dark text, used for axis, legend, and facet titles in theme_bc().
 #' @docType data
@@ -11,7 +11,7 @@
 dark_text <- "#1A242F"
 
 
-#' Light text
+#' Color: Light text
 #'
 #' Named color used for light text, used for axis lines, ticks, and all text in theme_bc() unless otherwise specified.
 #' @docType data
@@ -19,7 +19,7 @@ dark_text <- "#1A242F"
 #' @format A character string containing the hex code for Louisiana blue: "#575E66".
 light_text <- "#575E66"
 
-#' Mid gray
+#' Color: Mid gray
 #'
 #' Named color used for de-emphasized data.
 #' @docType data
@@ -27,7 +27,7 @@ light_text <- "#575E66"
 #' @format A character string containing the hex code for mid gray: "#94989D".
 mid_gray <- "#94989D"
 
-#' Light gray
+#' Color: Light gray
 #'
 #' Named color used for de-emphasized data and background plot elements.
 #' @docType data
@@ -39,7 +39,7 @@ light_gray <- "#D1D3D5"
 
 # Custom ------------------------------------------------------------------
 
-#' UL red
+#' Color: UL red
 #'
 #' Named color used for UL Vermillion red, used as title color in theme_bc().
 #' @docType data
@@ -48,7 +48,7 @@ light_gray <- "#D1D3D5"
 #' @source [UL approved web colors](https://louisiana.edu/web/tutorials-resources/web-style-guide/approved-web-colors)
 ull_red <- "#a00b0b" # UL red
 
-#' Louisiana blue
+#' Color: Louisiana blue
 #'
 #' Named color used for Louisiana-related data.
 #' @docType data
@@ -56,7 +56,7 @@ ull_red <- "#a00b0b" # UL red
 #' @format A character string containing the hex code for Louisiana blue: "#4776aa".
 col_la <- "#4776aa" # Louisiana blue
 
-#' U.S. red
+#' Color: U.S. red
 #'
 #' Named color used for U.S.-related data.
 #' @docType data
@@ -64,7 +64,7 @@ col_la <- "#4776aa" # Louisiana blue
 #' @format A character string containing the hex code for U.S. red: "#711F30".
 col_us <- "#711F30" # U.S. red
 
-#' Urban
+#' Color: Urban
 #'
 #' Named color used for urban data. Also included in the miscellaneous palette.
 #' @docType data
@@ -72,7 +72,7 @@ col_us <- "#711F30" # U.S. red
 #' @format A character string containing the hex code for urban: "#d24a41".
 col_ur <- "#d24a41" # misc_pal$strawberry
 
-#' Rural
+#' Color: Rural
 #'
 #' Named color used for rural data. Also included in the miscellaneous palette.
 #' @docType data

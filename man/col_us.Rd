@@ -3,7 +3,7 @@
 \docType{data}
 \name{col_us}
 \alias{col_us}
-\title{U.S. red}
+\title{Color: U.S. red}
 \format{
 A character string containing the hex code for U.S. red: "#711F30".
 }

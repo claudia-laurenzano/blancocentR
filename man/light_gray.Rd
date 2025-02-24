@@ -3,7 +3,7 @@
 \docType{data}
 \name{light_gray}
 \alias{light_gray}
-\title{Light gray}
+\title{Color: Light gray}
 \format{
 A character string containing the hex code for Louisiana blue: "#D1D3D5".
 }

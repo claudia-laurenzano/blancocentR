@@ -3,7 +3,7 @@
 \docType{data}
 \name{dark_text}
 \alias{dark_text}
-\title{Dark text}
+\title{Color: Dark text}
 \format{
 A character string containing the hex code for dark text: "#1A242F".
 }

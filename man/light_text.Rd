@@ -3,7 +3,7 @@
 \docType{data}
 \name{light_text}
 \alias{light_text}
-\title{Light text}
+\title{Color: Light text}
 \format{
 A character string containing the hex code for Louisiana blue: "#575E66".
 }

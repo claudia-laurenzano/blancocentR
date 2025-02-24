@@ -3,7 +3,7 @@
 \docType{data}
 \name{ull_red}
 \alias{ull_red}
-\title{UL red}
+\title{Color: UL red}
 \format{
 A character string containing the hex code for UL red: "#a00b0b".
 }

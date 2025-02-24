@@ -3,7 +3,7 @@
 \docType{data}
 \name{mid_gray}
 \alias{mid_gray}
-\title{Mid gray}
+\title{Color: Mid gray}
 \format{
 A character string containing the hex code for mid gray: "#94989D".
 }

@@ -3,7 +3,7 @@
 \docType{data}
 \name{col_la}
 \alias{col_la}
-\title{Louisiana blue}
+\title{Color: Louisiana blue}
 \format{
 A character string containing the hex code for Louisiana blue: "#4776aa".
 }

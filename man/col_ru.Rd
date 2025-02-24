@@ -3,7 +3,7 @@
 \docType{data}
 \name{col_ru}
 \alias{col_ru}
-\title{Rural}
+\title{Color: Rural}
 \format{
 A character string containing the hex code for rural: "#23464f".
 }

@@ -3,7 +3,7 @@
 \docType{data}
 \name{col_ur}
 \alias{col_ur}
-\title{Urban}
+\title{Color: Urban}
 \format{
 A character string containing the hex code for urban: "#d24a41".
 }
