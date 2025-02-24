@@ -21,6 +21,11 @@ You can install the development version of blancocentR from
 pak::pak("claudia-laurenzano/blancocentR")
 ```
 
+## Documentation
+
+For detailed package documentation, please visit the [pkgdown
+site](https://claudia-laurenzano.github.io/blancocentR/).
+
 ## Example
 
 This is a basic example of how you can use the `louisiana` data, the
