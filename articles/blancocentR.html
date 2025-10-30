@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">blancocentR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,16 +69,54 @@ Blanco Center data visualizations. The main use of blancocentR is in
 conjunction with ggplot2, but colors can be used across other tools, and
 the included data can be useful for applications that don’t involve data
 visualizations.</p>
+<blockquote>
+<p>Version 1.0.0 updates (Fall 2025):</p>
+<ul>
+<li>
+<p>ggplot themes</p>
+<ul>
+<li><p><code><a href="../reference/theme_bc.html">theme_bc()</a></code> got a major update, including new
+features released in ggplot2 4.0.0. and no longer relies on {sysfonts}
+and {showtext}</p></li>
+<li><p>the original <code><a href="../reference/theme_bc.html">theme_bc()</a></code> is now available under
+<code><a href="../reference/theme_bc_legacy.html">theme_bc_legacy()</a></code></p></li>
+<li><p>added <code><a href="../reference/theme_lafirst.html">theme_lafirst()</a></code></p></li>
+</ul>
+</li>
+<li>
+<p>new: gt theme</p>
+<ul>
+<li>added <code><a href="../reference/gt_theme_bc.html">gt_theme_bc()</a></code> to style gt tables</li>
+</ul>
+</li>
+<li>
+<p>colors</p>
+<ul>
+<li>added LA FIRST colors</li>
+</ul>
+</li>
+<li>
+<p>data</p>
+<ul>
+<li>included long-format versions of <code>louisiana</code> and
+<code>parishes</code>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <div class="section level3">
 <h3 id="the-data">The data<a class="anchor" aria-label="anchor" href="#the-data"></a>
 </h3>
-<p>BlancocentR includes two data objects that should help working with
-Louisiana’s 64 parishes and region designations by different state
-agencies or other organizations: While the tibble <code>parishes</code>
-includes the parishes and regions, <code>louisiana</code> is an sf
-object which includes population estimates, geometry, and center points
-for each parish in addition to what is included in
-<code>parishes</code>.</p>
+<p>BlancocentR includes two datasets available as objects that should
+help working with Louisiana’s 64 parishes and region designations by
+different state agencies or other organizations: While the tibble
+<code>parishes</code> includes the parishes and regions,
+<code>louisiana</code> is an sf object which includes population
+estimates, geometry, and center points for each parish in addition to
+what is included in <code>parishes</code>. Both are now available in
+long-format as well (<code>parishes_long</code> and
+<code>louisiana_long</code>).</p>
 <p>You can access the data via <code><a href="../reference/parishes.html">blancocentR::parishes</a></code> and
 <code><a href="../reference/louisiana.html">blancocentR::louisiana</a></code>, or you can load them into your
 environment. Let’s load both!</p>
@@ -97,8 +135,31 @@ parish.</p>
 DCFS regions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
-<span><span class="va">p2</span></span></code></pre></div>
+<span></span>
+<span><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Louisiana regions designated by DCFS"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="blancocentR_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
+<div class="section level4">
+<h4 id="the-long-format">The long format<a class="anchor" aria-label="anchor" href="#the-long-format"></a>
+</h4>
+<p>In the 1.0.0 update, we include long-format versions of the data:
+<code>parishes_long</code> and <code>louisiana_long</code>. All region
+names are now stored in the variable <code>region_name</code> while
+region numbers are in <code>region_number</code>. Organizations/agencies
+are in the variable <code>org</code>. You can filter for the agency you
+want and call the regions like in the next example.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://glue.tidyverse.org/" class="external-link">glue</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">louisiana_long</span><span class="op">)</span></span>
+<span><span class="va">org_var</span> <span class="op">&lt;-</span> <span class="st">"LDH"</span></span>
+<span></span>
+<span><span class="va">louisiana_long</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">org</span> <span class="op">==</span> <span class="va">org_var</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">region_name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"Louisiana regions designated by {org_var}"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="getting-region-polygons">Getting region polygons<a class="anchor" aria-label="anchor" href="#getting-region-polygons"></a>
@@ -109,20 +170,38 @@ region boundaries without using ‘fill’ for regions. Maybe you’d like to
 plop each region’s name in the center of their area. We can do that
 using <code><a href="../reference/get_region_geometry.html">get_region_geometry()</a></code>. Let’s use DCFS regions again
 for this example!</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dcfs_regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_region_geometry.html">get_region_geometry</a></span><span class="op">(</span><span class="va">louisiana</span>, <span class="va">region_DCFS</span>, <span class="va">region_name_DCFS</span><span class="op">)</span></span></code></pre></div>
 <p>Our sf object has changed from 64 observations (one for each parish)
 to 9 observations (one for each DCFS region). Let’s plot a map!</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dcfs_regions</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> <span class="co"># parish boundaries</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">0.7</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> <span class="co"># region boundaries</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span><span class="op">)</span> <span class="co"># region names</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 <div class="section level3">
-<h3 id="the-theme">The theme<a class="anchor" aria-label="anchor" href="#the-theme"></a>
+<h3 id="the-themes">The themes<a class="anchor" aria-label="anchor" href="#the-themes"></a>
 </h3>
+<p>This package includes the Blanco Center theme,
+<code><a href="../reference/theme_bc.html">theme_bc()</a></code>, <code><a href="../reference/theme_bc_legacy.html">theme_bc_legacy()</a></code>, and
+<code><a href="../reference/theme_lafirst.html">theme_lafirst()</a></code> for ggplot styling, and
+<code><a href="../reference/gt_theme_bc.html">gt_theme_bc()</a></code> for gt table styling.</p>
+<div class="section level4">
+<h4 id="theme_bc">theme_bc()<a class="anchor" aria-label="anchor" href="#theme_bc"></a>
+</h4>
+<blockquote>
+<p>Please note that <code><a href="../reference/theme_bc.html">theme_bc()</a></code> now requires ggplot2 ver.
+4.0.0 or higher, as it ships with functionality released in the ggplot2
+update (e.g., the arguments <code>ink</code>, <code>paper</code>, and
+<code>accent</code>). The original version of <code><a href="../reference/theme_bc.html">theme_bc()</a></code> is
+now available under a new name: <code><a href="../reference/theme_bc_legacy.html">theme_bc_legacy()</a></code> if you
+are reluctant to update ggplot2. The arguments <code>base_font</code>
+and <code>title_font</code> have been renamed to
+<code>base_family</code> and <code>header_family</code>, respectively,
+to be in line with ggplot2 argument names.</p>
+</blockquote>
 <p>BlancocentR includes the Blanco Center theme,
 <code><a href="../reference/theme_bc.html">theme_bc()</a></code>. The theme defines the use of font families,
 sizes, and colors for different aspects of the plot structure. The base
@@ -131,53 +210,1364 @@ size 12 and color <code>light_text</code> (“#575E66”). The plot
 structure (e.g., axis lines, ticks, and text) all use the color
 <code>light_text</code> as well, only titles (plot title, legend title,
 and axis titles) are more emphasizes by using <em>serif</em> font
-“Bitter” and the color <code>dark_text</code>. For extra emphasis and
-ULL color branding, the plot title uses <code>ull_red</code>
-(“#a00b0b”). The default position for the legend defined by this theme
-is on top of the plot in a horizontal direction but that can be changed
-as needed. You can customize the theme by changing its arguments.</p>
+“Bitter” and the color <code>dark_text</code> (“#1A242F”). For extra
+emphasis and ULL color branding, the plot title uses
+<code>ull_red</code> (“#a00b0b”). New arguments that came with the
+ggplot2 4.0.0 update include 1) <code>ink</code>, the foreground color
+which is by default <code>light_text</code>, 2) <code>paper</code>, the
+background color, “white” by default, and 3) <code>accent</code>, the
+accent color <code>col_la</code> (“#4776aa”) by default. The default
+position for the legend defined by this theme is on top of the plot in a
+horizontal direction but that can be changed as needed. You can
+customize the theme by changing its arguments.</p>
 <p>Let’s create some additional example plots to use throughout this
 tutorial.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
-<span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">estimate</span>, y <span class="op">=</span> <span class="va">region_name_DCFS</span>, color <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span>,</span>
-<span>    size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/number.html" class="external-link">cut_short_scale</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Louisiana population in 2023"</span>, </span>
-<span>       subtitle <span class="op">=</span> <span class="st">"Parish population by DCFS region"</span>, </span>
-<span>       caption <span class="op">=</span> <span class="st">"Source: U.S. Census, 2023 ACS 5-Year estimates, Table B01003"</span>,</span>
-<span>       y <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>       x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
-<p>Let’s see how plot p4 looks when we add our theme:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
-<div class="section level4">
-<h4 id="grid-lines">Grid lines<a class="anchor" aria-label="anchor" href="#grid-lines"></a>
-</h4>
-<p>If you like, you can add grid lines. For p4, we can add x grid lines.
-It wouldn’t make much sense to add y grid lines, but you can if you want
-to using <code>theme_bc(grid_y = TRUE)</code>.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">trees</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Girth</span>, y <span class="op">=</span> <span class="va">Height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>size <span class="op">=</span> <span class="va">Volume</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"This is a title"</span>, </span>
+<span>       subtitle <span class="op">=</span> <span class="st">"This is a subtitle"</span>, </span>
+<span>       caption <span class="op">=</span> <span class="st">"This is a caption"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p3</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<p>Let’s see how plot <code>p3</code> looks when we add our theme:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<div class="section level5">
+<h5 id="ink-paper-accent">ink, paper, accent<a class="anchor" aria-label="anchor" href="#ink-paper-accent"></a>
+</h5>
+<p>With the release of ggplot2 4.0.0, we got additional arguments to
+style the colors of our plot. <code>ink</code> for foreground colors,
+<code>paper</code> for background colors, and <code>accent</code> for
+accent colors. By default, these are set in <code><a href="../reference/theme_bc.html">theme_bc()</a></code> as
+follows:
+<code>theme_bc(ink = light_gray, paper = "white", accent = col_la, overwrite_ink = TRUE)</code>.
+The argument <code>overwrite_ink</code> is set to TRUE by default, which
+means that even though <code>ink</code> is set to
+<code>light_gray</code>, certain elements that inherit their color from
+<code>ink</code>, are different colors as defined in the theme settings.
+Let’s take another look at plot <code>p3</code> with default
+theming.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p>By default, <code>ink</code> is “black” while the line in
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth()</a></code> is blue (“#3366FF”). If we apply
+<code><a href="../reference/theme_bc.html">theme_bc()</a></code>, the points will be <code>light_text</code>,
+while other foreground elements will be either <code>ull_red</code>
+(plot title), <code>dark_text</code> (axis titles and legend titles), or
+<code>light_text</code> (everything else). The accent line is now
+<code>col_la</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p>By default, theme settings in <code><a href="../reference/theme_bc.html">theme_bc()</a></code> overwrites
+<code>ink</code> almost everywhere. We can change that using the
+<code>overwrite_ink</code> argument in the function. Let’s try out a
+different look!</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span></span>
+<span>  overwrite_ink <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>  ink <span class="op">=</span> <span class="st">"seashell"</span>, </span>
+<span>  paper <span class="op">=</span> <span class="st">"skyblue4"</span>, </span>
+<span>  accent <span class="op">=</span> <span class="st">"goldenrod"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+</div>
+<div class="section level5">
+<h5 id="grid-lines">Grid lines<a class="anchor" aria-label="anchor" href="#grid-lines"></a>
+</h5>
+<p>If you like, you can add grid lines. For <code>p3</code>, we can add
+x grid lines, y grid lines, or both. Let’s add only x grid lines
+here.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Now with grid lines!"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span>grid_x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="co"># remove legend</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 </div>
-<div class="section level4">
-<h4 id="void">Void<a class="anchor" aria-label="anchor" href="#void"></a>
-</h4>
+<div class="section level5">
+<h5 id="void">Void<a class="anchor" aria-label="anchor" href="#void"></a>
+</h5>
 <p>Most maps look better without any axes. We can take advantage of the
 ‘void’ argument to remove all axes in one simple step.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Louisiana"</span>, </span>
 <span>       subtitle <span class="op">=</span> <span class="st">"A map showing all 64 parishes"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span>void <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-14-1.png" width="480"></p>
+</div>
+<div class="section level5">
+<h5 id="legacy">Legacy<a class="anchor" aria-label="anchor" href="#legacy"></a>
+</h5>
+<p>We replaced the old <code><a href="../reference/theme_bc.html">theme_bc()</a></code> with the new version,
+embracing ggplot2 4.0.0. This means that users must update to ggplot2
+4.0.0 or later to use the updated theme. However, for users who don’t
+wish to do so, the legacy version of the theme is still available in the
+package, under <code><a href="../reference/theme_bc_legacy.html">theme_bc_legacy()</a></code>.</p>
+</div>
+</div>
+<div class="section level4">
+<h4 id="theme_lafirst">theme_lafirst()<a class="anchor" aria-label="anchor" href="#theme_lafirst"></a>
+</h4>
+<p>A new addition to the package is <code><a href="../reference/theme_lafirst.html">theme_lafirst()</a></code>, an
+adaptation of <code><a href="../reference/theme_bc.html">theme_bc()</a></code> for use in LA FIRST reporting.
+Let’s take a look at <code>p3</code> with the LA FIRST theme.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="../reference/theme_lafirst.html">theme_lafirst</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-15-1.png" width="480"></p>
+</div>
+<div class="section level4">
+<h4 id="gt_theme_bc">gt_theme_bc()<a class="anchor" aria-label="anchor" href="#gt_theme_bc"></a>
+</h4>
+<p>Another new addition is the Blanco Center theme for gt tables! You’ll
+notice it looks quite similar to the BC ggplot theme. It carries over
+font families and colors for text, and sizing is quite similar as well.
+You can customize most aspects in the theme arguments, like base size,
+font families, text color, or other options you define inside
+<code><a href="https://gt.rstudio.com/reference/tab_options.html" class="external-link">tab_options()</a></code>.</p>
+<p>Let’s first look at a standard gt table, using the
+<code>gtcars</code> dataset that comes with the gt package.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com" class="external-link">gt</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gt1</span> <span class="op">&lt;-</span> <span class="va">gtcars</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">mfr</span><span class="op">:</span><span class="va">hp</span>, <span class="va">trq</span>, <span class="va">ctry_origin</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span>rowname_col <span class="op">=</span> <span class="st">"mfr"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html" class="external-link">tab_header</a></span><span class="op">(</span></span>
+<span>        title <span class="op">=</span> <span class="st">'Ferrari &amp; Horsepower'</span>,</span>
+<span>        subtitle <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html" class="external-link">md</a></span><span class="op">(</span><span class="st">'Data is courtesy of the {gt} *R package*'</span><span class="op">)</span>, </span>
+<span>    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_source_note.html" class="external-link">tab_source_note</a></span><span class="op">(</span><span class="st">"A source note here"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_source_note.html" class="external-link">tab_source_note</a></span><span class="op">(</span><span class="st">"Another source note here"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_footnote.html" class="external-link">tab_footnote</a></span><span class="op">(</span><span class="st">"This is the highest hp (footnote)"</span>, </span>
+<span>                 locations <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cells_body.html" class="external-link">cells_body</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">hp</span>, rows <span class="op">=</span> <span class="va">hp</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">hp</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_footnote.html" class="external-link">tab_footnote</a></span><span class="op">(</span><span class="st">"This is the lowest trq (footnote)"</span>, </span>
+<span>                 locations <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/cells_body.html" class="external-link">cells_body</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="va">trq</span>, rows <span class="op">=</span> <span class="va">trq</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">trq</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_caption.html" class="external-link">tab_caption</a></span><span class="op">(</span><span class="st">"A caption here"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_stubhead.html" class="external-link">tab_stubhead</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"Make"</span><span class="op">)</span>  <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_row_group.html" class="external-link">tab_row_group</a></span><span class="op">(</span></span>
+<span>        label <span class="op">=</span> <span class="st">"Italy"</span>,</span>
+<span>        rows <span class="op">=</span> <span class="va">ctry_origin</span> <span class="op">==</span> <span class="st">"Italy"</span></span>
+<span>    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_row_group.html" class="external-link">tab_row_group</a></span><span class="op">(</span></span>
+<span>        label <span class="op">=</span> <span class="st">"United States"</span>,</span>
+<span>        rows <span class="op">=</span> <span class="va">ctry_origin</span> <span class="op">==</span> <span class="st">"United States"</span></span>
+<span>    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span></span>
+<span>        label <span class="op">=</span> <span class="st">"Body"</span>,</span>
+<span>        columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">trim</span>, <span class="va">bdy_style</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html" class="external-link">tab_spanner</a></span><span class="op">(</span></span>
+<span>        label <span class="op">=</span> <span class="st">"Specs"</span>,</span>
+<span>        columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">hp</span><span class="op">:</span><span class="va">trq</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_hide.html" class="external-link">cols_hide</a></span><span class="op">(</span><span class="va">ctry_origin</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gt1</span></span></code></pre></div>
+<div id="mmyucmrwtk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mmyucmrwtk table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mmyucmrwtk thead, #mmyucmrwtk tbody, #mmyucmrwtk tfoot, #mmyucmrwtk tr, #mmyucmrwtk td, #mmyucmrwtk th {
+  border-style: none;
+}
+
+#mmyucmrwtk p {
+  margin: 0;
+  padding: 0;
+}
+
+#mmyucmrwtk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mmyucmrwtk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mmyucmrwtk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mmyucmrwtk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mmyucmrwtk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mmyucmrwtk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mmyucmrwtk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mmyucmrwtk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mmyucmrwtk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mmyucmrwtk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mmyucmrwtk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mmyucmrwtk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mmyucmrwtk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mmyucmrwtk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mmyucmrwtk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmyucmrwtk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mmyucmrwtk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mmyucmrwtk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mmyucmrwtk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmyucmrwtk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mmyucmrwtk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmyucmrwtk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mmyucmrwtk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmyucmrwtk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mmyucmrwtk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mmyucmrwtk .gt_left {
+  text-align: left;
+}
+
+#mmyucmrwtk .gt_center {
+  text-align: center;
+}
+
+#mmyucmrwtk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mmyucmrwtk .gt_font_normal {
+  font-weight: normal;
+}
+
+#mmyucmrwtk .gt_font_bold {
+  font-weight: bold;
+}
+
+#mmyucmrwtk .gt_font_italic {
+  font-style: italic;
+}
+
+#mmyucmrwtk .gt_super {
+  font-size: 65%;
+}
+
+#mmyucmrwtk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mmyucmrwtk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mmyucmrwtk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mmyucmrwtk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mmyucmrwtk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mmyucmrwtk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mmyucmrwtk .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mmyucmrwtk .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mmyucmrwtk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>A caption here</caption>
+  <thead>
+<tr class="gt_heading">
+<td colspan="7" class="gt_heading gt_title gt_font_normal" style>Ferrari &amp; Horsepower</td>
+    </tr>
+<tr class="gt_heading">
+<td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><span class="gt_from_md">Data is courtesy of the {gt} <em>R package</em></span></td>
+    </tr>
+<tr class="gt_col_headings gt_spanner_row">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id="a::stub">Make</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id="model">model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" scope="col" id="year">year</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Body">
+        <div class="gt_column_spanner">Body</div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Specs">
+        <div class="gt_column_spanner">Specs</div>
+      </th>
+    </tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="trim">trim</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="bdy_style">bdy_style</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="hp">hp</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="trq">trq</th>
+    </tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" scope="colgroup" id="United States">United States</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub">Ford</th>
+<td headers="United States stub_1_1 model" class="gt_row gt_left">GT</td>
+<td headers="United States stub_1_1 year" class="gt_row gt_right">2017</td>
+<td headers="United States stub_1_1 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="United States stub_1_1 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="United States stub_1_1 hp" class="gt_row gt_right">647</td>
+<td headers="United States stub_1_1 trq" class="gt_row gt_right">550</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" scope="colgroup" id="Italy">Italy</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_2 model" class="gt_row gt_left">458 Speciale</td>
+<td headers="Italy stub_1_2 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_2 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_2 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_2 hp" class="gt_row gt_right">597</td>
+<td headers="Italy stub_1_2 trq" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> 398</td>
+</tr>
+<tr>
+<th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_3 model" class="gt_row gt_left">458 Spider</td>
+<td headers="Italy stub_1_3 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_3 trim" class="gt_row gt_left">Base</td>
+<td headers="Italy stub_1_3 bdy_style" class="gt_row gt_left">convertible</td>
+<td headers="Italy stub_1_3 hp" class="gt_row gt_right">562</td>
+<td headers="Italy stub_1_3 trq" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> 398</td>
+</tr>
+<tr>
+<th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_4 model" class="gt_row gt_left">458 Italia</td>
+<td headers="Italy stub_1_4 year" class="gt_row gt_right">2014</td>
+<td headers="Italy stub_1_4 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_4 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_4 hp" class="gt_row gt_right">562</td>
+<td headers="Italy stub_1_4 trq" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> 398</td>
+</tr>
+<tr>
+<th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_5 model" class="gt_row gt_left">488 GTB</td>
+<td headers="Italy stub_1_5 year" class="gt_row gt_right">2016</td>
+<td headers="Italy stub_1_5 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_5 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_5 hp" class="gt_row gt_right">661</td>
+<td headers="Italy stub_1_5 trq" class="gt_row gt_right">561</td>
+</tr>
+<tr>
+<th id="stub_1_6" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_6 model" class="gt_row gt_left">California</td>
+<td headers="Italy stub_1_6 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_6 trim" class="gt_row gt_left">Base Convertible</td>
+<td headers="Italy stub_1_6 bdy_style" class="gt_row gt_left">convertible</td>
+<td headers="Italy stub_1_6 hp" class="gt_row gt_right">553</td>
+<td headers="Italy stub_1_6 trq" class="gt_row gt_right">557</td>
+</tr>
+<tr>
+<th id="stub_1_7" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_7 model" class="gt_row gt_left">GTC4Lusso</td>
+<td headers="Italy stub_1_7 year" class="gt_row gt_right">2017</td>
+<td headers="Italy stub_1_7 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_7 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_7 hp" class="gt_row gt_right">680</td>
+<td headers="Italy stub_1_7 trq" class="gt_row gt_right">514</td>
+</tr>
+<tr>
+<th id="stub_1_8" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_8 model" class="gt_row gt_left">FF</td>
+<td headers="Italy stub_1_8 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_8 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_8 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_8 hp" class="gt_row gt_right">652</td>
+<td headers="Italy stub_1_8 trq" class="gt_row gt_right">504</td>
+</tr>
+<tr>
+<th id="stub_1_9" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_9 model" class="gt_row gt_left">F12Berlinetta</td>
+<td headers="Italy stub_1_9 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_9 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_9 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_9 hp" class="gt_row gt_right">731</td>
+<td headers="Italy stub_1_9 trq" class="gt_row gt_right">509</td>
+</tr>
+<tr>
+<th id="stub_1_10" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_10 model" class="gt_row gt_left">LaFerrari</td>
+<td headers="Italy stub_1_10 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_10 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_10 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_10 hp" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> 949</td>
+<td headers="Italy stub_1_10 trq" class="gt_row gt_right">664</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="gt_footnotes">
+<td class="gt_footnote" colspan="7">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> This is the lowest trq (footnote)</td>
+    </tr>
+<tr class="gt_footnotes">
+<td class="gt_footnote" colspan="7">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> This is the highest hp (footnote)</td>
+    </tr>
+<tr class="gt_sourcenotes">
+<td class="gt_sourcenote" colspan="7">A source note here</td>
+    </tr>
+<tr class="gt_sourcenotes">
+<td class="gt_sourcenote" colspan="7">Another source note here</td>
+    </tr>
+</tfoot>
+</table>
+</div>
+<p>Now we’ll give it a refresh with our theme!</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gt1</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/gt_theme_bc.html">gt_theme_bc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div id="qjlmpgudac" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qjlmpgudac table {
+  font-family: Quicksand, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qjlmpgudac thead, #qjlmpgudac tbody, #qjlmpgudac tfoot, #qjlmpgudac tr, #qjlmpgudac td, #qjlmpgudac th {
+  border-style: none;
+}
+
+#qjlmpgudac p {
+  margin: 0;
+  padding: 0;
+}
+
+#qjlmpgudac .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #575E66;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qjlmpgudac .gt_title {
+  color: #575E66;
+  font-size: 24px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qjlmpgudac .gt_subtitle {
+  color: #575E66;
+  font-size: 19.2px;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qjlmpgudac .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_col_heading {
+  color: #575E66;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qjlmpgudac .gt_column_spanner_outer {
+  color: #575E66;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qjlmpgudac .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qjlmpgudac .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qjlmpgudac .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qjlmpgudac .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qjlmpgudac .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #575E66;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qjlmpgudac .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #575E66;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qjlmpgudac .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qjlmpgudac .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qjlmpgudac .gt_row {
+  padding-top: 6.08px;
+  padding-bottom: 6.08px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D1D3D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qjlmpgudac .gt_stub {
+  color: #575E66;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qjlmpgudac .gt_stub_row_group {
+  color: #575E66;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qjlmpgudac .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qjlmpgudac .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qjlmpgudac .gt_summary_row {
+  color: #575E66;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qjlmpgudac .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qjlmpgudac .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_grand_summary_row {
+  color: #575E66;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qjlmpgudac .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qjlmpgudac .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_footnotes {
+  color: #575E66;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qjlmpgudac .gt_sourcenotes {
+  color: #575E66;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qjlmpgudac .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qjlmpgudac .gt_left {
+  text-align: left;
+}
+
+#qjlmpgudac .gt_center {
+  text-align: center;
+}
+
+#qjlmpgudac .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qjlmpgudac .gt_font_normal {
+  font-weight: normal;
+}
+
+#qjlmpgudac .gt_font_bold {
+  font-weight: bold;
+}
+
+#qjlmpgudac .gt_font_italic {
+  font-style: italic;
+}
+
+#qjlmpgudac .gt_super {
+  font-size: 65%;
+}
+
+#qjlmpgudac .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qjlmpgudac .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qjlmpgudac .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qjlmpgudac .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qjlmpgudac .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qjlmpgudac .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qjlmpgudac .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#qjlmpgudac .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#qjlmpgudac div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>A caption here</caption>
+  <thead>
+<tr class="gt_heading">
+<td colspan="7" class="gt_heading gt_title gt_font_normal" style="color: #A00B0B; font-family: Bitter;">Ferrari &amp; Horsepower</td>
+    </tr>
+<tr class="gt_heading">
+<td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><span class="gt_from_md">Data is courtesy of the {gt} <em>R package</em></span></td>
+    </tr>
+<tr class="gt_col_headings gt_spanner_row">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="color: #575E66; font-family: Bitter; font-weight: bold;" scope="col" id="a::stub">Make</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="color: #575E66; font-family: Bitter; font-weight: bold;" scope="col" id="model">model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" style="color: #575E66; font-family: Bitter; font-weight: bold;" scope="col" id="year">year</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="color: #575E66; font-family: Bitter; font-style: italic;" scope="colgroup" id="Body">
+        <div class="gt_column_spanner">Body</div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" style="color: #575E66; font-family: Bitter; font-style: italic;" scope="colgroup" id="Specs">
+        <div class="gt_column_spanner">Specs</div>
+      </th>
+    </tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="color: #575E66; font-family: Bitter; font-weight: bold;" scope="col" id="trim">trim</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="color: #575E66; font-family: Bitter; font-weight: bold;" scope="col" id="bdy_style">bdy_style</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="color: #575E66; font-family: Bitter; font-weight: bold;" scope="col" id="hp">hp</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="color: #575E66; font-family: Bitter; font-weight: bold;" scope="col" id="trq">trq</th>
+    </tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" style="color: #575E66; font-family: Bitter; font-style: italic;" scope="colgroup" id="United States">United States</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub">Ford</th>
+<td headers="United States stub_1_1 model" class="gt_row gt_left">GT</td>
+<td headers="United States stub_1_1 year" class="gt_row gt_right">2017</td>
+<td headers="United States stub_1_1 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="United States stub_1_1 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="United States stub_1_1 hp" class="gt_row gt_right">647</td>
+<td headers="United States stub_1_1 trq" class="gt_row gt_right">550</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" style="color: #575E66; font-family: Bitter; font-style: italic;" scope="colgroup" id="Italy">Italy</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_2 model" class="gt_row gt_left">458 Speciale</td>
+<td headers="Italy stub_1_2 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_2 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_2 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_2 hp" class="gt_row gt_right">597</td>
+<td headers="Italy stub_1_2 trq" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> 398</td>
+</tr>
+<tr>
+<th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_3 model" class="gt_row gt_left">458 Spider</td>
+<td headers="Italy stub_1_3 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_3 trim" class="gt_row gt_left">Base</td>
+<td headers="Italy stub_1_3 bdy_style" class="gt_row gt_left">convertible</td>
+<td headers="Italy stub_1_3 hp" class="gt_row gt_right">562</td>
+<td headers="Italy stub_1_3 trq" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> 398</td>
+</tr>
+<tr>
+<th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_4 model" class="gt_row gt_left">458 Italia</td>
+<td headers="Italy stub_1_4 year" class="gt_row gt_right">2014</td>
+<td headers="Italy stub_1_4 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_4 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_4 hp" class="gt_row gt_right">562</td>
+<td headers="Italy stub_1_4 trq" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> 398</td>
+</tr>
+<tr>
+<th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_5 model" class="gt_row gt_left">488 GTB</td>
+<td headers="Italy stub_1_5 year" class="gt_row gt_right">2016</td>
+<td headers="Italy stub_1_5 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_5 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_5 hp" class="gt_row gt_right">661</td>
+<td headers="Italy stub_1_5 trq" class="gt_row gt_right">561</td>
+</tr>
+<tr>
+<th id="stub_1_6" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_6 model" class="gt_row gt_left">California</td>
+<td headers="Italy stub_1_6 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_6 trim" class="gt_row gt_left">Base Convertible</td>
+<td headers="Italy stub_1_6 bdy_style" class="gt_row gt_left">convertible</td>
+<td headers="Italy stub_1_6 hp" class="gt_row gt_right">553</td>
+<td headers="Italy stub_1_6 trq" class="gt_row gt_right">557</td>
+</tr>
+<tr>
+<th id="stub_1_7" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_7 model" class="gt_row gt_left">GTC4Lusso</td>
+<td headers="Italy stub_1_7 year" class="gt_row gt_right">2017</td>
+<td headers="Italy stub_1_7 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_7 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_7 hp" class="gt_row gt_right">680</td>
+<td headers="Italy stub_1_7 trq" class="gt_row gt_right">514</td>
+</tr>
+<tr>
+<th id="stub_1_8" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_8 model" class="gt_row gt_left">FF</td>
+<td headers="Italy stub_1_8 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_8 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_8 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_8 hp" class="gt_row gt_right">652</td>
+<td headers="Italy stub_1_8 trq" class="gt_row gt_right">504</td>
+</tr>
+<tr>
+<th id="stub_1_9" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_9 model" class="gt_row gt_left">F12Berlinetta</td>
+<td headers="Italy stub_1_9 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_9 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_9 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_9 hp" class="gt_row gt_right">731</td>
+<td headers="Italy stub_1_9 trq" class="gt_row gt_right">509</td>
+</tr>
+<tr>
+<th id="stub_1_10" scope="row" class="gt_row gt_left gt_stub">Ferrari</th>
+<td headers="Italy stub_1_10 model" class="gt_row gt_left">LaFerrari</td>
+<td headers="Italy stub_1_10 year" class="gt_row gt_right">2015</td>
+<td headers="Italy stub_1_10 trim" class="gt_row gt_left">Base Coupe</td>
+<td headers="Italy stub_1_10 bdy_style" class="gt_row gt_left">coupe</td>
+<td headers="Italy stub_1_10 hp" class="gt_row gt_right">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> 949</td>
+<td headers="Italy stub_1_10 trq" class="gt_row gt_right">664</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="gt_footnotes">
+<td class="gt_footnote" colspan="7">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> This is the lowest trq (footnote)</td>
+    </tr>
+<tr class="gt_footnotes">
+<td class="gt_footnote" colspan="7">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> This is the highest hp (footnote)</td>
+    </tr>
+<tr class="gt_sourcenotes">
+<td class="gt_sourcenote" colspan="7">A source note here</td>
+    </tr>
+<tr class="gt_sourcenotes">
+<td class="gt_sourcenote" colspan="7">Another source note here</td>
+    </tr>
+</tfoot>
+</table>
+</div>
 </div>
 </div>
 <div class="section level3">
@@ -192,7 +1582,7 @@ colors from R scripts.</p>
 </h4>
 <p>Named colors are accessible once you’ve loaded this package without
 showing up in your environment.</p>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-18-1.png" width="700"></p>
 </div>
 <div class="section level4">
 <h4 id="miscellaneous-colors">Miscellaneous colors<a class="anchor" aria-label="anchor" href="#miscellaneous-colors"></a>
@@ -201,7 +1591,7 @@ showing up in your environment.</p>
 specific color from this collection by naming it specifically, e.g.,
 <code>misc_pal$jadegreen</code>, or print the whole list by calling
 <code>misc_pal</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -236,11 +1626,58 @@ specific color from this collection by naming it specifically, e.g.,
 <span>  <span class="co"># row 5</span></span>
 <span>  <span class="st">"vintageviolet"</span> <span class="op">=</span> <span class="st">"#77839b"</span> <span class="co"># 9th region color</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-13-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-20-1.png" width="700"></p>
 <p>The miscellaneous palette is also available as palette function to
 use directly in ggplot with discrete variables. See <a href="#palette-functions">Palette functions</a> on palette functions in
 general, and <a href="#miscellaneous-palette">Miscellaneous palette</a>
 on how to use this palette.</p>
+</div>
+<div class="section level4">
+<h4 id="new-la-first-colors">New LA FIRST colors<a class="anchor" aria-label="anchor" href="#new-la-first-colors"></a>
+</h4>
+<p>LA FIRST includes two additional colors that can be used in
+conjunction with the miscellaneous palette <code>misc_pal</code>:
+<code>lafirst_pal</code>. Similarly to calling colors from
+<code>misc_pal</code>, you can access these colors by name, e.g.,
+<code>lafirst_pal$smokyorchid</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"tealsea"</span> <span class="op">=</span> <span class="st">"#398F88"</span>, <span class="st">"smokyorchid"</span> <span class="op">=</span> <span class="st">"#A581B3"</span> <span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-22-1.png" width="700"></p>
+<div class="section level5">
+<h5 id="suggested-palettes">Suggested palettes<a class="anchor" aria-label="anchor" href="#suggested-palettes"></a>
+</h5>
+<p>We suggest to be mindful of harmful stereotypes when visualizing data
+aggregated by e.g., race or gender, and to consider using alternative
+aesthetic mapping (e.g., x and y variables, facets) where possible.
+However, in cases where it makes the most sense to assign colors to such
+population groups, LA FIRST suggests to use the following colors for
+races and genders, contained in designated color palette vectors.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">race_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  <span class="st">"white"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">jadegreen</span>,</span>
+<span>  <span class="st">"black"</span> <span class="op">=</span> <span class="va">col_la</span>,</span>
+<span>  <span class="st">"hispanic"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">strawberry</span>,</span>
+<span>  <span class="st">"asian"</span> <span class="op">=</span> <span class="va">lafirst_pal</span><span class="op">$</span><span class="va">orchid</span>,</span>
+<span>  <span class="st">"other"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">mustard</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">race_muted_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  <span class="st">"white"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">deepforest</span>,</span>
+<span>  <span class="st">"black"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">midnight</span>,</span>
+<span>  <span class="st">"hispanic"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">berry</span>,</span>
+<span>  <span class="st">"asian"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">vintageviolet</span>,</span>
+<span>  <span class="st">"other"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">mustard</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sex_gender_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  <span class="st">"men"</span> <span class="op">=</span> <span class="va">lafirst_pal</span><span class="op">$</span><span class="va">tealsea</span>,</span>
+<span>  <span class="st">"women"</span> <span class="op">=</span> <span class="va">misc_pal</span><span class="op">$</span><span class="va">peachy</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-25-1.png" width="700"></p>
+</div>
 </div>
 <div class="section level4">
 <h4 id="palette-functions">Palette functions<a class="anchor" aria-label="anchor" href="#palette-functions"></a>
@@ -255,25 +1692,37 @@ aesthetics.</p>
 <p>Region palettes map each region identifier to a specific color.
 Region identifiers can be either names or numbers. Let’s take a
 look:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">estimate</span>, y <span class="op">=</span> <span class="va">region_name_DCFS</span>, color <span class="op">=</span> <span class="va">region_name_DCFS</span><span class="op">)</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/number.html" class="external-link">cut_short_scale</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Louisiana population in 2023"</span>, </span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Parish population by DCFS region"</span>, </span>
+<span>       caption <span class="op">=</span> <span class="st">"Source: U.S. Census, 2023 ACS 5-Year estimates, Table B01003"</span>,</span>
+<span>       y <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>       x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p4</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="../reference/dcfs_palette.html">dcfs_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-14-1.png" width="768"></p>
-<p>Similarly to the color aesthetics, we can map fill:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-26-1.png" width="700"></p>
+<p>Similarly to the color aesthetics, we can map <code>fill</code>:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="../reference/dcfs_palette.html">dcfs_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span>void <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-15-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-27-1.png" width="480"></p>
 <p>This works because we mapped the color/fill aesthetics to the
-variable ‘region_name_DCFS’ (as you can see in the legend title). Any
-region color palette will assign the colors to the region name as
-opposed to the region number by default. In our object
-<code>dcfs_regions</code>, we have the numeric variable ‘region_DCFS’
-and the character variable ‘region_name_DCFS’. Other region variables in
+variable <code>region_name_DCFS</code> (as you can see in the legend
+title). Any region color palette will assign the colors to the region
+name as opposed to the region number by default. In our object
+<code>dcfs_regions</code>, we have the numeric variable
+<code>region_DCFS</code> and the character variable
+<code>region_name_DCFS</code>. Other region variables in
 <code>parishes</code> and <code>louisiana</code> follow the same
 pattern.</p>
 <p>If you prefer to map color to the region number instead, you’ll need
@@ -281,8 +1730,8 @@ to convert the region’s numeric value to a discrete value (e.g., by
 using <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code>) and specify the use of region number rather
 than region name inside <code><a href="../reference/dcfs_palette.html">dcfs_palette()</a></code> via the ‘region’
 argument. In this step, we can also darken the color for region 9 -
-Monroe using the ‘darken’ argument.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+Monroe using the <code>darken</code> argument.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="va">estimate</span>,</span>
@@ -301,7 +1750,7 @@ Monroe using the ‘darken’ argument.</p>
 <span>       x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-28-1.png" width="700"></p>
 <p>Our legend title is now “factor(region_DCFS)” and the colors are
 mapped to the numeric counterpart of our region names.</p>
 </div>
@@ -310,53 +1759,82 @@ mapped to the numeric counterpart of our region names.</p>
 </h5>
 <p>Gradient palettes, just like the other palettes in blancocentR,
 generate colors. The default number of colors is 7 but you can adjust
-the number of colors using the ‘n’ argument. Because the function
-generates a number of colors, we can’t use it directly for continuous
-variables, only for discrete variables. However, we can make use of
-<code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient()</a></code> by defining the ‘low’ and ‘high’
-arguments like so:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+the number of colors using the <code>n</code> argument. Because the
+function generates a number of colors, we can’t use it directly for
+continuous variables, only for discrete variables. However, we can make
+use of <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient()</a></code> by defining the ‘low’ and
+‘high’ arguments like so:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">estimate</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient</a></span><span class="op">(</span></span>
 <span>  low <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, </span>
 <span>  high <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">7</span><span class="op">]</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-17-1.png" width="480"></p>
-<p>In the previous example, we use the 7th color as ‘high’ because we
-didn’t define the number of colors the palette generates. By default,
-this number is 7, so the 7th color is the lightest color. We can achieve
-the exact same result by generating n colors and selecting the nth value
-as ‘high’, e.g. using n = 2:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-29-1.png" width="480"></p>
+<p>In the previous example, we use the 7th color as <code>high</code>
+because we didn’t define the number of colors the palette generates. By
+default, this number is 7, so the 7th color is the lightest color. We
+can achieve the exact same result by generating n colors and selecting
+the nth value as <code>high</code>, e.g. using n = 2:</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">louisiana</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">estimate</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient</a></span><span class="op">(</span></span>
 <span>  low <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, </span>
 <span>  high <span class="op">=</span> <span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-18-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-30-1.png" width="480"></p>
 <p><em>Note:</em> You could also adjust the base color used to generate
-the palette with the ‘base’ argument, but that’s not recommended. Under
-the hood, the function uses
+the palette with the <code>base</code> argument, but that’s not
+recommended. Under the hood, the function uses
 <code><a href="https://rdrr.io/pkg/monochromeR/man/generate_palette.html" class="external-link">monochromeR::generate_palette()</a></code><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See {monochromeR} on &lt;a href="https://github.com/cararthompson/monochromeR" title="Cara R Thompson (2021). monochromeR: A package for creating monochrome colour palettes and easily converting rgba values to hex codes." class="external-link"&gt;github&lt;/a&gt;.&lt;/p&gt;'><sup>1</sup></a>.</p>
 <p>Here are all gradient palettes:</p>
 <p><code><a href="../reference/la_gradient_palette.html">la_gradient_palette()</a></code></p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/la_gradient_palette.html">la_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-19-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-31-1.png" width="480"></p>
 <p><code><a href="../reference/us_gradient_palette.html">us_gradient_palette()</a></code></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/us_gradient_palette.html">us_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-20-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-32-1.png" width="480"></p>
 <p><code><a href="../reference/ur_gradient_palette.html">ur_gradient_palette()</a></code></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/ur_gradient_palette.html">ur_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-21-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-33-1.png" width="480"></p>
 <p><code><a href="../reference/ru_gradient_palette.html">ru_gradient_palette()</a></code></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/ru_gradient_palette.html">ru_gradient_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-22-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-34-1.png" width="480"></p>
+<p>A slightly different version exists in <code>gradient()</code>, a
+function that a list of colors and lightens them via
+<code><a href="https://colorspace.R-Forge.R-project.org/reference/lighten.html" class="external-link">colorspace::lighten()</a></code> and sequentially between 0% and 100%.
+Users can customize the number of steps in the function argument
+<code>n</code>, 11 by default to achieve colors in 10% intervals. In the
+example below, we lighten <code>col_la</code> in 20% intervals.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">col_la_gradient</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gradients.html">gradients</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"color"</span> <span class="op">=</span> <span class="va">col_la</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">col_la_gradient</span></span>
+<span><span class="co">#&gt; $color100</span></span>
+<span><span class="co">#&gt; [1] "#4776aa"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $color80</span></span>
+<span><span class="co">#&gt; [1] "#6690C4"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $color60</span></span>
+<span><span class="co">#&gt; [1] "#84ABE0"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $color40</span></span>
+<span><span class="co">#&gt; [1] "#A1C7FD"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $color20</span></span>
+<span><span class="co">#&gt; [1] "#D1E3FF"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $color0</span></span>
+<span><span class="co">#&gt; [1] "#FFFFFF"</span></span>
+<span></span>
+<span><span class="va">col_la_gradient</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="va">paste</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">show_col</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-35-1.png" width="700"></p>
 </div>
 <div class="section level5">
 <h5 id="miscellaneous-palette">Miscellaneous palette<a class="anchor" aria-label="anchor" href="#miscellaneous-palette"></a>
@@ -372,13 +1850,13 @@ you have mapped your aesthetics. This will work as long as 1) your
 variable is discrete, and 2) your variable doesn’t exceed 21 distinct
 levels<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;If your variable does exceed 21 distinct levels, you
 really shouldn’t use colors to distinguish them!&lt;/p&gt;"><sup>2</sup></a>.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p4</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="../reference/misc_palette.html">misc_palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/theme_bc.html">theme_bc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"These are colors from the Miscellaneous palette!"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-23-1.png" width="768"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-36-1.png" width="700"></p>
 </div>
 </div>
 </div>
@@ -397,9 +1875,9 @@ vision deficiency, or if you print them in gray-scale.</p>
 <li><p>tritanope simulation (blue cone cells defective)</p></li>
 <li><p>desaturated (gray-scale)</p></li>
 </ol>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/show_cvd.html">show_cvd</a></span><span class="op">(</span><span class="fu"><a href="../reference/misc_palette.html">misc_palette</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="blancocentR_files/figure-html/unnamed-chunk-24-1.png" width="480"></p>
+<p><img src="blancocentR_files/figure-html/unnamed-chunk-37-1.png" width="480"></p>
 <p><em>Note:</em> Under the hood, the function uses
 <code><a href="https://scales.r-lib.org/reference/show_col.html" class="external-link">scales::show_col()</a></code><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See the {scales} &lt;a href="https://scales.r-lib.org" title="Wickham H, Pedersen T, Seidel D (2023). scales: Scale Functions for Visualization. R package version 1.3.0." class="external-link"&gt;documentation
 site&lt;/a&gt;.&lt;/p&gt;'><sup>3</sup></a> and functions from the {colorspace}<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See the {colorspace} &lt;a href="https://colorspace.r-forge.r-project.org" title="Zeileis A, Fisher JC, Hornik K, Ihaka R, McWhite CD, Murrell P, Stauffer R, Wilke CO (2020). “colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes.” Journal of Statistical Software, 96(1), 1–49. doi:10.18637/jss.v096.i01." class="external-link"&gt;documentation
@@ -419,7 +1897,7 @@ package.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
