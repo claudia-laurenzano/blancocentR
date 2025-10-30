@@ -1,39 +1,43 @@
 Package: blancocentR
 Title: A helper package for Blanco Center staff
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person("Claudia", "Laurenzano", , "claudialaurenzano@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-1406-8658"))
+           comment = c(ORCID = "0000-0003-1406-8658")),
+    person("Jenna", "Losh", role = "ctb")
+  )
 Description: A package for Blanco Center staff to facilitate a cohesive
-    look across data visualizations. This package includes ggplot2 theme,
-    colors and color palettes, two data files on Louisiana's 64 parishes
-    and region designations by different agencies and organizations (one
-    with and one without geometry), and a function to join parish polygons
-    into region polygons. Some palettes were built using the 'monochromeR'
-    package which provides methods for blending colors. Shapefiles and
-    population data from the U.S. Census were acquired via the
-    'tidycensus' package.
+    look across data visualizations and tbales. This package includes
+    ggplot2 themes, a theme for gt tables, colors and color palettes, two
+    data files on Louisiana's 64 parishes and region designations by
+    different agencies and organizations (one with and one without
+    geometry), and a function to join parish polygons into region
+    polygons. Some palettes were built using the 'monochromeR' package
+    which provides methods for blending colors. Shapefiles and population
+    data from the U.S. Census were acquired via the 'tidycensus' package.
 License: MIT + file LICENSE
-URL: https://github.com/claudia-laurenzano/blancocentR/tree/main, https://claudia-laurenzano.github.io/blancocentR/
+URL: https://github.com/claudia-laurenzano/blancocentR/tree/main
 BugReports: https://github.com/claudia-laurenzano/blancocentR/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
+LazyData: true
 Imports: 
-    colorspace,
     dplyr,
     ggplot2,
+    magrittr
+Suggests: 
+    colorspace,
     ggtext,
-    magrittr,
+    gt,
+    knitr,
     monochromeR,
+    pkgdown,
+    rmarkdown,
     scales,
     sf,
     showtext,
     sysfonts,
     tidyr
-Suggests: 
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr

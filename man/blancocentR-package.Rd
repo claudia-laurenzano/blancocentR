@@ -5,19 +5,23 @@
 \alias{blancocentR-package}
 \title{blancocentR: A helper package for Blanco Center staff}
 \description{
-A package for Blanco Center staff to facilitate a cohesive look across data visualizations. This package includes ggplot2 theme, colors and color palettes, two data files on Louisiana's 64 parishes and region designations by different agencies and organizations (one with and one without geometry), and a function to join parish polygons into region polygons. Some palettes were built using the 'monochromeR' package which provides methods for blending colors. Shapefiles and population data from the U.S. Census were acquired via the 'tidycensus' package.
+A package for Blanco Center staff to facilitate a cohesive look across data visualizations and tbales. This package includes ggplot2 themes, a theme for gt tables, colors and color palettes, two data files on Louisiana's 64 parishes and region designations by different agencies and organizations (one with and one without geometry), and a function to join parish polygons into region polygons. Some palettes were built using the 'monochromeR' package which provides methods for blending colors. Shapefiles and population data from the U.S. Census were acquired via the 'tidycensus' package.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/claudia-laurenzano/blancocentR/tree/main}
-  \item \url{https://claudia-laurenzano.github.io/blancocentR/}
   \item Report bugs at \url{https://github.com/claudia-laurenzano/blancocentR/issues}
 }
 
 }
 \author{
 \strong{Maintainer}: Claudia Laurenzano \email{claudialaurenzano@gmail.com} (\href{https://orcid.org/0000-0003-1406-8658}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Jenna Losh [contributor]
+}
 
 }
 \keyword{internal}

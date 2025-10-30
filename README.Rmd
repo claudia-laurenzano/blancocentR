@@ -16,9 +16,10 @@ knitr::opts_chunk$set(
 # blancocentR
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-The goal of blancocentR is to facilitate easy mapping of Louisiana's 64 parishes and various region designations, as well as to allow for cohesive data visualizations across the Blanco Center using the Blanco Center theme and colors. 
+The goal of blancocentR is to facilitate easy mapping of Louisiana's 64 parishes and various region designations, as well as to allow for cohesive data visualizations across the Blanco Center using the Blanco Center theme and colors.
 
 ## Installation
 
@@ -50,4 +51,3 @@ ggplot(louisiana) +
   theme_bc(void = TRUE) + 
   theme(legend.position = "right")
 ```
-

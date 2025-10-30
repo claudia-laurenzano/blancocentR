@@ -3,45 +3,35 @@
 
 #' A ggplot2 theme for Blanco Center visualizations
 #'
-#' `theme_bc()` adds the Blanco Center theme to any plot created using `ggplot()`.
+#' `theme_bc_legacy()` adds the Blanco Center theme to any plot created using `ggplot()`.
 #' Customize plot elements like font family and color and axis colors and line sizes.
 #' Grid lines for x and y axes can be added, or all axes can be removed, e.g. for maps.
-#' Note: This is the updated version (Fall 2025) which requires ggplot2 ver. 4.0.0
-#' and is no longer dependent on showtext. If you prefer to use the legacy version
-#' from 2023, please use theme_bc_legacy().
+#' Note: This is the legacy version of the Blanco Center theme function (developed in 2023).
+#' For the updated version, use theme_bc(), developed Fall 2025.
 #'
-#' @param base_family Font used for most text.
-#' @param header_family Font used for titles: plot title, axis titles, legend title.
+#' @param title_font Font used for titles: plot title, axis titles, legend title.
+#' @param base_font Font used for all other text.
 #' @param dark_text Color used for axis and legend titles.
 #' @param light_text Color used for everything else, except plot title.
-#' @param ink Color for foreground.
-#' @param paper Color for background.
-#' @param accent Color for accents.
-#' @param overwrite_ink TRUE or FALSE: if TRUE, theme settings overwrite ink specification.
-#' @param void TRUE or FALSE: if TRUE, removes all axis elements. Suggested for maps.
-#' @param grid_x TRUE or FALSE: if TRUE, adds x grid lines.
-#' @param grid_y TRUE or FALSE: if TRUE, adds y grid lines.
+#' @param void TRUE or FALSE: removes all axis elements. Suggested for maps.
+#' @param grid_x TRUE or FALSE: adds x gridlines.
+#' @param grid_y TRUE or FALSE: adds y gridlines.
 #' @param base_size Base text size in pts.
 #' @param base_line_size Base line size in pts.
 #' @param base_rect_size Base rectangle size in pts.
 #'
 #' @importFrom ggplot2 '%+replace%'
-#' @importFrom utils 'packageVersion'
 #' @return A ggplot2 theme.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' theme_bc(header_family = "Bitter", base_family = "Quicksand", void = TRUE)
+#' theme_bc_legacy(title_font = "Bitter", base_font = "Quicksand", void = TRUE)
 #' }
-theme_bc <- function(base_family = "Quicksand",
-                     header_family = "Bitter",
+theme_bc_legacy <- function(title_font = "Bitter",
+                     base_font = "Quicksand",
                      dark_text = "#1A242F",
                      light_text = "#575E66",
-                     ink = light_text,
-                     paper = "white",
-                     accent = "#4776aa",
-                     overwrite_ink = TRUE,
                      void = FALSE,
                      grid_x = FALSE,
                      grid_y = FALSE,
@@ -49,75 +39,48 @@ theme_bc <- function(base_family = "Quicksand",
                      base_line_size = base_size / 22,
                      base_rect_size = base_size / 22) {
 
-  required_pkgs <- c(ggplot2 = "4.0.0", ggtext = NA)
-  missing_pkgs <- names(required_pkgs)[
-    !vapply(names(required_pkgs), requireNamespace, logical(1), quietly = TRUE)
-  ]
+  required_pkgs <- c("ggplot2", "sysfonts", "showtext", "ggtext")
+  missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
 
   if (length(missing_pkgs)) {
     stop(
-      "theme_bc() requires the following packages: ",
+      "theme_bc_legacy() requires the following packages: ",
       paste(missing_pkgs, collapse = ", "),
       ". Please install them."
     )
   }
 
-  # Check versions
-  version_issues <- names(required_pkgs)[
-    !is.na(required_pkgs) & vapply(
-      names(required_pkgs)[!is.na(required_pkgs)],
-      function(pkg) utils::packageVersion(pkg) >= required_pkgs[pkg],
-      logical(1)
-    ) == FALSE
-  ]
-
-  if (length(version_issues)) {
-    stop(
-      "theme_bc() requires a minimum version for: ",
-      paste(version_issues, collapse = ", "),
-      ". Please update the package(s)."
-    )
-  }
+  # fonts
+  sysfonts::font_add_google("Quicksand", family = "Quicksand") # sans
+  sysfonts::font_add_google("Bitter", family = "Bitter") # serif
+  showtext::showtext_auto()
 
   # colors
   light_gray <- "#D1D3D5"
   ull_red <- "#a00b0b"
 
-  if(overwrite_ink == TRUE) {
-    dark_text <- dark_text
-    light_text <- light_text
-    plot_title_col <- ull_red
-  } else {
-    dark_text <- ink
-    light_text <- ink
-    plot_title_col <- ink
-  }
 
   theme <- ggplot2::theme_classic(
     base_size = base_size,
     base_family = "",
     base_line_size = base_line_size,
-    base_rect_size = base_rect_size,
-    paper = paper,
-    ink = ink,
-    accent = accent
+    base_rect_size = base_rect_size
   )  %+replace%
     ggplot2::theme(
-
       # background
-      panel.background = ggplot2::element_rect(fill = paper, colour = NA),
-      plot.background = ggplot2::element_rect(fill = paper, colour = NA),
+      panel.background = ggplot2::element_blank(),
+      plot.background  = ggplot2::element_blank(),
 
       # text
-      text = ggplot2::element_text(family = base_family,
+      text = ggplot2::element_text(family = base_font,
                                    color = light_text),
 
       # plot title
       plot.title.position = "plot",
       plot.title = ggtext::element_textbox_simple(
-        family = header_family,
+        family = title_font,
         size = base_size * 1.5, # 12*1.5=18
-        color = plot_title_col,
+        color = ull_red,
         margin = ggplot2::margin(0, 0, 8, 0)
       ),
 
@@ -140,14 +103,16 @@ theme_bc <- function(base_family = "Quicksand",
       legend.position = "top",
       legend.justification = "left",
       legend.title = ggplot2::element_text(
-        family = header_family,
+        family = title_font,
+        size = base_size,
         color = dark_text
       ),
+      legend.text = ggplot2::element_text(size = base_size),
       legend.box.margin = ggplot2::margin(0, 0, 4, 0),
 
       # axes
       axis.title = ggplot2::element_text(
-        family = header_family,
+        family = title_font,
         size = base_size * 0.917, # 12*0.917=11.004
         color = dark_text
       ),
@@ -158,13 +123,12 @@ theme_bc <- function(base_family = "Quicksand",
       # facet strips
       strip.background = ggplot2::element_blank(),
       strip.text = ggplot2::element_text(
-        family = header_family,
+        family = title_font,
         size = base_size * 1.1, # 12*1.1=13.2
         color = dark_text,
         margin = ggplot2::margin(1, 1, 6, 1)
-      ),
+      )
 
-      complete = TRUE
     )
 
   # void
@@ -201,7 +165,5 @@ theme_bc <- function(base_family = "Quicksand",
     }
   }
 }
-
-
 
 

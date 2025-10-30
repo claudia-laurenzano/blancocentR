@@ -20,12 +20,26 @@
 #' get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
 #' }
 get_region_geometry <- function(df, region_number, region_name){
+
+  required_pkgs <- c("dplyr", "tidyr", "sf")
+  missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
+
+  if (length(missing_pkgs)) {
+    stop(
+      "get_region_geometry() requires the following packages: ",
+      paste(missing_pkgs, collapse = ", "),
+      ". Please install them."
+    )
+  }
+
   df %>%
     dplyr::group_by({{region_number}}, {{region_name}}) %>%
-    dplyr::summarize(dplyr::across(geometry, ~sf::st_union(.))) %>%
+    dplyr::summarize(dplyr::across("geometry", ~sf::st_union(.))) %>%
     dplyr::ungroup() %>%
     tidyr::drop_na({{region_number}}) %>%
     dplyr::mutate(center = sf::st_centroid(geometry))
 }
 
+# Tell R CMD check not to warn about 'geometry'
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("geometry"))
 

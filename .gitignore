@@ -10,3 +10,5 @@ docs
 blancocentR_pkg_dev.R
 /doc/
 /Meta/
+.RData
+blancocentR_dev_old.R

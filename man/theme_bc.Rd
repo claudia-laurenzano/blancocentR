@@ -5,10 +5,14 @@
 \title{A ggplot2 theme for Blanco Center visualizations}
 \usage{
 theme_bc(
-  title_font = "Bitter",
-  base_font = "Quicksand",
+  base_family = "Quicksand",
+  header_family = "Bitter",
   dark_text = "#1A242F",
   light_text = "#575E66",
+  ink = light_text,
+  paper = "white",
+  accent = "#4776aa",
+  overwrite_ink = TRUE,
   void = FALSE,
   grid_x = FALSE,
   grid_y = FALSE,
@@ -18,25 +22,33 @@ theme_bc(
 )
 }
 \arguments{
-\item{title_font}{Font used for titles: plot title, axis titles, legend title.}
+\item{base_family}{Font used for most text.}
 
-\item{base_font}{Font used for all other text.}
+\item{header_family}{Font used for titles: plot title, axis titles, legend title.}
 
 \item{dark_text}{Color used for axis and legend titles.}
 
 \item{light_text}{Color used for everything else, except plot title.}
 
-\item{void}{TRUE or FALSE: removes all axis elements. Suggested for maps.}
+\item{ink}{Color for foreground.}
 
-\item{grid_x}{TRUE or FALSE: adds x gridlines.}
+\item{paper}{Color for background.}
 
-\item{grid_y}{TRUE or FALSE: adds y gridlines.}
+\item{accent}{Color for accents.}
 
-\item{base_size}{Base text size.}
+\item{overwrite_ink}{TRUE or FALSE: if TRUE, theme settings overwrite ink specification.}
 
-\item{base_line_size}{Base line size.}
+\item{void}{TRUE or FALSE: if TRUE, removes all axis elements. Suggested for maps.}
 
-\item{base_rect_size}{Base rectangle size.}
+\item{grid_x}{TRUE or FALSE: if TRUE, adds x grid lines.}
+
+\item{grid_y}{TRUE or FALSE: if TRUE, adds y grid lines.}
+
+\item{base_size}{Base text size in pts.}
+
+\item{base_line_size}{Base line size in pts.}
+
+\item{base_rect_size}{Base rectangle size in pts.}
 }
 \value{
 A ggplot2 theme.
@@ -45,9 +57,12 @@ A ggplot2 theme.
 \code{theme_bc()} adds the Blanco Center theme to any plot created using \code{ggplot()}.
 Customize plot elements like font family and color and axis colors and line sizes.
 Grid lines for x and y axes can be added, or all axes can be removed, e.g. for maps.
+Note: This is the updated version (Fall 2025) which requires ggplot2 ver. 4.0.0
+and is no longer dependent on showtext. If you prefer to use the legacy version
+from 2023, please use theme_bc_legacy().
 }
 \examples{
 \dontrun{
-theme_bc(title_font = "Bitter", base_font = "Quicksand", void = TRUE)
+theme_bc(header_family = "Bitter", base_family = "Quicksand", void = TRUE)
 }
 }

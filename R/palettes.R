@@ -8,6 +8,7 @@
 #' @docType data
 #' @name dark_text
 #' @format A character string containing the hex code for dark text: "#1A242F".
+#' @export
 dark_text <- "#1A242F"
 
 
@@ -17,6 +18,7 @@ dark_text <- "#1A242F"
 #' @docType data
 #' @name light_text
 #' @format A character string containing the hex code for Louisiana blue: "#575E66".
+#' @export
 light_text <- "#575E66"
 
 #' Color: Mid gray
@@ -25,6 +27,7 @@ light_text <- "#575E66"
 #' @docType data
 #' @name mid_gray
 #' @format A character string containing the hex code for mid gray: "#94989D".
+#' @export
 mid_gray <- "#94989D"
 
 #' Color: Light gray
@@ -33,6 +36,7 @@ mid_gray <- "#94989D"
 #' @docType data
 #' @name light_gray
 #' @format A character string containing the hex code for Louisiana blue: "#D1D3D5".
+#' @export
 light_gray <- "#D1D3D5"
 
 
@@ -46,6 +50,7 @@ light_gray <- "#D1D3D5"
 #' @name ull_red
 #' @format A character string containing the hex code for UL red: "#a00b0b".
 #' @source [UL approved web colors](https://louisiana.edu/web/tutorials-resources/web-style-guide/approved-web-colors)
+#' @export
 ull_red <- "#a00b0b" # UL red
 
 #' Color: Louisiana blue
@@ -54,6 +59,7 @@ ull_red <- "#a00b0b" # UL red
 #' @docType data
 #' @name col_la
 #' @format A character string containing the hex code for Louisiana blue: "#4776aa".
+#' @export
 col_la <- "#4776aa" # Louisiana blue
 
 #' Color: U.S. red
@@ -62,6 +68,7 @@ col_la <- "#4776aa" # Louisiana blue
 #' @docType data
 #' @name col_us
 #' @format A character string containing the hex code for U.S. red: "#711F30".
+#' @export
 col_us <- "#711F30" # U.S. red
 
 #' Color: Urban
@@ -70,6 +77,7 @@ col_us <- "#711F30" # U.S. red
 #' @docType data
 #' @name col_ur
 #' @format A character string containing the hex code for urban: "#d24a41".
+#' @export
 col_ur <- "#d24a41" # misc_pal$strawberry
 
 #' Color: Rural
@@ -78,6 +86,7 @@ col_ur <- "#d24a41" # misc_pal$strawberry
 #' @docType data
 #' @name col_ru
 #' @format A character string containing the hex code for rural: "#23464f".
+#' @export
 col_ru <- "#23464f" # misc_pal$darkteal
 
 
@@ -208,6 +217,17 @@ ru_gradient_palette <- function(base = "#23464f", n = 7) {
 #' }
 dcfs_palette <- function(region = "name", darken = 0) {
 
+  required_pkgs <- c("colorspace")
+  missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
+
+  if (length(missing_pkgs)) {
+    stop(
+      "dcfs_palette() requires the following packages: ",
+      paste(missing_pkgs, collapse = ", "),
+      ". Please install them."
+    )
+  }
+
   if (!(darken %in% seq(0, 2, 1))) {
     stop("darken must be a natural number between 0 and 2.")
   }
@@ -272,6 +292,17 @@ dcfs_palette <- function(region = "name", darken = 0) {
 #' ldh_palette(region = "number", darken = 1)
 #' }
 ldh_palette <- function(region = "name", darken = 0) {
+
+  required_pkgs <- c("colorspace")
+  missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
+
+  if (length(missing_pkgs)) {
+    stop(
+      "ldh_palette() requires the following packages: ",
+      paste(missing_pkgs, collapse = ", "),
+      ". Please install them."
+    )
+  }
 
   if (!(darken %in% seq(0, 2, 1))) {
     stop("darken must be a natural number between 0 and 2.")
@@ -338,6 +369,17 @@ ldh_palette <- function(region = "name", darken = 0) {
 #' de_palette(region = "number", darken = 1)
 #' }
 de_palette <- function(region = "name", darken = 0) {
+
+  required_pkgs <- c("colorspace")
+  missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
+
+  if (length(missing_pkgs)) {
+    stop(
+      "de_palette() requires the following packages: ",
+      paste(missing_pkgs, collapse = ", "),
+      ". Please install them."
+    )
+  }
 
   if (!(darken %in% seq(0, 2, 1))) {
     stop("darken must be a natural number between 0 and 2.")
@@ -432,6 +474,7 @@ misc_palette <- function(n = 21) {
 #' @docType data
 #' @name misc_pal
 #' @format A character vector with named color values.
+#' @export
 misc_pal <- list(
   "midnight" = "#243e56",
   "mint" = "#bcefde",
@@ -461,3 +504,164 @@ misc_pal <- list(
 )
 
 # export(misc_pal)
+
+
+# LA FIRST ----------------------------------------------------------------
+
+#' Color: LAFIRST blue
+#'
+#' Named color used for titles in theme_lafirst() unless otherwise specified.
+#' @docType data
+#' @name lafirst_blue2
+#' @format A character string containing the hex code for LA FIRST blue: "#475ab3".
+#' @export
+lafirst_blue2 = "#293b69"
+
+
+## palettes ----------------------------------------------------------------
+
+#' LA FIRST palette
+#'
+#' A named vector of hex color codes that define two additional colors for use in LA FIRST visualizations (additional to misc_pal).
+#'
+#' @docType data
+#' @name lafirst_pal
+#' @format A character vector with named color values.
+#' @export
+lafirst_pal <- list(
+  "tealsea" = "#398F88",
+  "smokyorchid" = "#A581B3"
+)
+
+
+#' LA FIRST race/ethnicity palette
+#'
+#' A named vector of hex color codes for use in LA FIRST visualizations showing race/ethnicity by color.
+#'
+#' @docType data
+#' @name race_pal
+#' @format A character vector with named color values.
+#' @export
+race_pal <- list(
+  "white" = misc_pal$jadegreen,
+  "black" = col_la,
+  "hispanic" = misc_pal$strawberry,
+  "asian" = lafirst_pal$orchid,
+  "other" = misc_pal$mustard
+)
+
+
+#' LA FIRST muted race/ethnicity palette
+#'
+#' A named vector of hex color codes for use in LA FIRST visualizations showing race/ethnicity by color. A more muted selection
+#'
+#' @docType data
+#' @name race_muted_pal
+#' @format A character vector with named color values.
+#' @export
+race_muted_pal <- list(
+  "white" = misc_pal$deepforest,
+  "black" = misc_pal$midnight,
+  "hispanic" = misc_pal$berry,
+  "asian" = misc_pal$vintageviolet,
+  "other" = misc_pal$mustard
+)
+
+
+#' LA FIRST sex/gender palette
+#'
+#' A named vector of hex color codes for use in LA FIRST visualizations showing sex or gender by color.
+#'
+#' @docType data
+#' @name sex_gender_pal
+#' @format A character vector with named color values.
+#' @export
+sex_gender_pal <- list(
+  "men" = lafirst_pal$tealsea,
+  "women" = misc_pal$peachy
+)
+
+
+#' Color gradient palettes function for general purpose use, using colorspace::lighten
+#'
+#' Create gradient color palettes.
+#'
+#' @param colors List of colors to be lightened.
+#' @param n Number of shades in the palette. Default = 11 (lighten by 10% steps).
+#'
+#' @return A list.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' gradients(race_pal)
+#' }
+gradients <- function(colors, n = 11) {
+
+  required_pkgs <- c("colorspace")
+  missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
+
+  if (length(missing_pkgs)) {
+    stop(
+      "gradients() requires the following packages: ",
+      paste(missing_pkgs, collapse = ", "),
+      ". Please install them."
+    )
+  }
+
+  out <- c()
+
+  for (nm in names(colors)) {
+    base_col <- colors[[nm]]
+    # --- colorspace::lighten version ---
+    steps <- seq(0, 1, length.out = n)
+    cols <- vapply(steps, function(s) colorspace::lighten(base_col, amount = s), character(1))
+
+    # Name gradients 100, 90, ..., 0 (so darkest is 100)
+    pct <- seq(100, 0, length.out = n)
+    names(cols) <- paste0(nm, pct)
+    out[names(cols)] <- as.list(cols)
+  }
+
+  return(out)
+}
+
+
+
+# Color sim ---------------------------------------------------------------
+
+# show colors in different color deficiency simulations
+#' Simulate color vision deficiency
+#'
+#' Simulate color(s) to check how people with different variations of
+#' colorblindness may perceive your visualization. Supported variations include
+#' deuteranopia, protanopia, tritanopia, and grayscale.
+#'
+#' @param x A color, a vector of colors, or a color palette.
+#'
+#' @return A plot showing selected color or colors in different color deficiency simulations.
+#' @export
+#'
+#' @examples
+#' x <- c("steelblue", "firebrick", "gold")
+#' show_cvd(x)
+show_cvd <- function(x){
+
+  required_pkgs <- c("scales")
+  missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
+
+  if (length(missing_pkgs)) {
+    stop(
+      "show_cvd() requires the following packages: ",
+      paste(missing_pkgs, collapse = ", "),
+      ". Please install them."
+    )
+  }
+
+  scales::show_col(c(x,
+                     colorspace::deutan(x),
+                     colorspace::protan(x),
+                     colorspace::tritan(x),
+                     colorspace::desaturate(x)),
+                   ncol = length(x))
+}
