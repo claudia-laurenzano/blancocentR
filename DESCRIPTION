@@ -1,6 +1,6 @@
 Package: blancocentR
 Title: A helper package for Blanco Center staff
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: c(
     person("Claudia", "Laurenzano", , "claudialaurenzano@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1406-8658")),
