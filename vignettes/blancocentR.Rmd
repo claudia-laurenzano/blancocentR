@@ -247,8 +247,12 @@ gt1
 
 Now we'll give it a refresh with our theme!
 
-```{r}
+```{r eval=FALSE}
 gt1 %>% gt_theme_bc()
+```
+
+```{r echo=FALSE}
+gt1 %>% gt_theme_bc() %>% patchwork::wrap_table()
 ```
 
 ## The colors
