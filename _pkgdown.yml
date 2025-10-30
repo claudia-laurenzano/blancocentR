@@ -2,4 +2,7 @@ url: https://claudia-laurenzano.github.io/blancocentR/
 template:
   bootstrap: 5
   bootswatch: yeti
+  includes:
+    in_header:
+      - fonts.html
 
