@@ -2,7 +2,21 @@ url: https://claudia-laurenzano.github.io/blancocentR/
 template:
   bootstrap: 5
   bootswatch: yeti
+  pkgdown:
+  build:
+    before: pkgdown/_pkgdown.R
   includes:
-    in_header:
-      - fonts.html
+    in_header: |
+      <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+      <style>
+        body, .gt_table {
+          font-family: 'Quicksand', sans-serif;
+        }
+        h1, h2, h3, h4 {
+          font-family: 'Bitter', serif;
+        }
+        .gt_table {
+          font-family: 'Quicksand', sans-serif;
+        }
+      </style>
 

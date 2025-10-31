@@ -7,12 +7,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+```
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>", 
   message = FALSE, 
-  warning = FALSE
+  warning = FALSE,
+  dev = "ragg_png", 
+  dpi = 300
 )
 ```
 
@@ -78,7 +83,7 @@ p2 + labs(title = "Louisiana regions designated by DCFS")
 
 In the 1.0.0 update, we include long-format versions of the data: `parishes_long` and `louisiana_long`. All region names are now stored in the variable `region_name` while region numbers are in `region_number`. Organizations/agencies are in the variable `org`. You can filter for the agency you want and call the regions like in the next example.
 
-```{r fig.height=4.5, fig.width=6}
+```{r pll, fig.height=4.5, fig.width=6}
 library(glue)
 library(dplyr)
 data(louisiana_long)
@@ -101,7 +106,7 @@ dcfs_regions <- get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
 
 Our sf object has changed from 64 observations (one for each parish) to 9 observations (one for each DCFS region). Let's plot a map!
 
-```{r}
+```{r pdcfs}
 ggplot(dcfs_regions) + 
   geom_sf(data = louisiana) + # parish boundaries
   geom_sf(lwd = 0.7, fill = NA) + # region boundaries
@@ -121,7 +126,7 @@ BlancocentR includes the Blanco Center theme, `theme_bc()`. The theme defines th
 
 Let's create some additional example plots to use throughout this tutorial.
 
-```{r}
+```{r }
 library(scales)
 
 p3 <- ggplot(trees, aes(x = Girth, y = Height)) +
@@ -136,7 +141,7 @@ p3
 
 Let's see how plot `p3` looks when we add our theme:
 
-```{r}
+```{r }
 p3 + theme_bc()
 ```
 
@@ -144,7 +149,7 @@ p3 + theme_bc()
 
 With the release of ggplot2 4.0.0, we got additional arguments to style the colors of our plot. `ink` for foreground colors, `paper` for background colors, and `accent` for accent colors. By default, these are set in `theme_bc()` as follows: `theme_bc(ink = light_gray, paper = "white", accent = col_la, overwrite_ink = TRUE)`. The argument `overwrite_ink` is set to TRUE by default, which means that even though `ink` is set to `light_gray`, certain elements that inherit their color from `ink`, are different colors as defined in the theme settings. Let's take another look at plot `p3` with default theming.
 
-```{r}
+```{r }
 p3
 ```
 
@@ -169,7 +174,7 @@ p3 + theme_bc(
 
 If you like, you can add grid lines. For `p3`, we can add x grid lines, y grid lines, or both. Let's add only x grid lines here.
 
-```{r}
+```{r }
 p3 + labs(title = "Now with grid lines!") + 
   theme_bc(grid_x = TRUE) + 
   theme(legend.position = "none") # remove legend
@@ -251,6 +256,10 @@ Now we'll give it a refresh with our theme!
 gt1 %>% gt_theme_bc()
 ```
 
+```{r}
+gt1 %>% gt_theme_bc()
+```
+
 ```{r echo=FALSE}
 gt1 %>% gt_theme_bc() %>% patchwork::wrap_table()
 ```
@@ -263,7 +272,7 @@ This package includes several color palettes, list of named colors, and individu
 
 Named colors are accessible once you've loaded this package without showing up in your environment.
 
-```{r echo=FALSE}
+```{r cols, echo=FALSE}
 library(tidyr)
 named_colors <- tribble(
   ~ order, ~ name, ~ color,
@@ -352,7 +361,7 @@ show_col(paste(lafirst_pal))
 
 We suggest to be mindful of harmful stereotypes when visualizing data aggregated by e.g., race or gender, and to consider using alternative aesthetic mapping (e.g., x and y variables, facets) where possible. However, in cases where it makes the most sense to assign colors to such population groups, LA FIRST suggests to use the following colors for races and genders, contained in designated color palette vectors.
 
-```{r}
+```{r }
 library(tidyr)
 
 race_pal <- list(
@@ -408,7 +417,7 @@ Palette functions generate a list of colors and can be used directly in your ggp
 
 Region palettes map each region identifier to a specific color. Region identifiers can be either names or numbers. Let's take a look:
 
-```{r}
+```{r }
 p4 <- ggplot(louisiana) + 
   geom_point(
     aes(x = estimate, y = region_name_DCFS, color = region_name_DCFS),
@@ -439,7 +448,7 @@ This works because we mapped the color/fill aesthetics to the variable `region_n
 
 If you prefer to map color to the region number instead, you'll need to convert the region's numeric value to a discrete value (e.g., by using `factor()`) and specify the use of region number rather than region name inside `dcfs_palette()` via the 'region' argument. In this step, we can also darken the color for region 9 - Monroe using the `darken` argument.
 
-```{r}
+```{r }
 ggplot(louisiana) + 
   geom_point(aes(
     x = estimate,
@@ -531,7 +540,7 @@ You can access the miscellaneous colors in two ways: 1) via printing the list of
 
 [^2]: If your variable does exceed 21 distinct levels, you really shouldn't use colors to distinguish them!
 
-```{r}
+```{r }
 p4 + 
   scale_color_manual(values = misc_palette()) + 
   theme_bc() + 
