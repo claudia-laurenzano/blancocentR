@@ -33,15 +33,15 @@ This package includes resources to help achieve a cohesive look for Blanco Cente
 >
 > -   ggplot themes
 >
->     -   `theme_bc()` got a major update, including new features released in ggplot2 4.0.0. and no longer relies on {sysfonts} and {showtext}
+>     -   `theme_bc()` got a major update, including new features released in ggplot2 4.0.0. and no longer relies on {sysfonts} and {showtext}[^1]
 >
 >     -   the original `theme_bc()` is now available under `theme_bc_legacy()`
 >
->     -   added `theme_lafirst()`
+>     -   added `theme_lafirst()`[^2]
 >
 > -   new: gt theme
 >
->     -   added `gt_theme_bc()` to style gt tables
+>     -   added `gt_theme_bc()` to style gt tables[^3]
 >
 > -   colors
 >
@@ -50,6 +50,12 @@ This package includes resources to help achieve a cohesive look for Blanco Cente
 > -   data
 >
 >     -   included long-format versions of `louisiana` and `parishes`
+
+[^1]: Fonts Quicksand and Bitter must be installed on user's machine.
+
+[^2]: Font Univers must be installed on user's machine.
+
+[^3]: Fonts Quicksand and Bitter must be installed on user's machine.
 
 ## The data
 
@@ -64,7 +70,7 @@ data(louisiana)
 
 We can now plot a simple map of Louisiana with outlines for each parish.
 
-```{r fig.height=4, fig.width=5, message=FALSE}
+```{r , message=FALSE}
 library(ggplot2)
 
 p1 <- ggplot(louisiana) + geom_sf()
@@ -73,7 +79,7 @@ p1
 
 We can use the 'fill' aesthetic to designate different regions, e.g., DCFS regions.
 
-```{r fig.height=4.5, fig.width=5}
+```{r }
 p2 <- ggplot(louisiana) + geom_sf(aes(fill = region_name_DCFS), show.legend = FALSE) 
 
 p2 + labs(title = "Louisiana regions designated by DCFS")
@@ -83,7 +89,7 @@ p2 + labs(title = "Louisiana regions designated by DCFS")
 
 In the 1.0.0 update, we include long-format versions of the data: `parishes_long` and `louisiana_long`. All region names are now stored in the variable `region_name` while region numbers are in `region_number`. Organizations/agencies are in the variable `org`. You can filter for the agency you want and call the regions like in the next example.
 
-```{r pll, fig.height=4.5, fig.width=6}
+```{r}
 library(glue)
 library(dplyr)
 data(louisiana_long)
@@ -106,7 +112,7 @@ dcfs_regions <- get_region_geometry(louisiana, region_DCFS, region_name_DCFS)
 
 Our sf object has changed from 64 observations (one for each parish) to 9 observations (one for each DCFS region). Let's plot a map!
 
-```{r pdcfs}
+```{r }
 ggplot(dcfs_regions) + 
   geom_sf(data = louisiana) + # parish boundaries
   geom_sf(lwd = 0.7, fill = NA) + # region boundaries
@@ -184,7 +190,7 @@ p3 + labs(title = "Now with grid lines!") +
 
 Most maps look better without any axes. We can take advantage of the 'void' argument to remove all axes in one simple step.
 
-```{r fig.height=5, fig.width=5}
+```{r}
 p1 + 
   labs(title = "Louisiana", 
        subtitle = "A map showing all 64 parishes") +
@@ -199,7 +205,7 @@ We replaced the old `theme_bc()` with the new version, embracing ggplot2 4.0.0. 
 
 A new addition to the package is `theme_lafirst()`, an adaptation of `theme_bc()` for use in LA FIRST reporting. Let's take a look at `p3` with the LA FIRST theme.
 
-```{r fig.width=5, fig.height=5}
+```{r}
 p3 + theme_lafirst()
 ```
 
@@ -272,7 +278,7 @@ This package includes several color palettes, list of named colors, and individu
 
 Named colors are accessible once you've loaded this package without showing up in your environment.
 
-```{r cols, echo=FALSE}
+```{r echo=FALSE}
 library(tidyr)
 named_colors <- tribble(
   ~ order, ~ name, ~ color,
@@ -437,7 +443,7 @@ p4 +
 
 Similarly to the color aesthetics, we can map `fill`:
 
-```{r fig.height=4, fig.width=5}
+```{r}
 p2 + 
   scale_fill_manual(values = dcfs_palette()) + 
   theme_bc(void = TRUE) + 
@@ -475,7 +481,7 @@ Our legend title is now "factor(region_DCFS)" and the colors are mapped to the n
 
 Gradient palettes, just like the other palettes in blancocentR, generate colors. The default number of colors is 7 but you can adjust the number of colors using the `n` argument. Because the function generates a number of colors, we can't use it directly for continuous variables, only for discrete variables. However, we can make use of `scale_fill_gradient()` by defining the 'low' and 'high' arguments like so:
 
-```{r fig.height=4, fig.width=5, message=FALSE}
+```{r  message=FALSE}
 ggplot(louisiana) + 
   geom_sf(aes(fill = estimate)) + 
   scale_fill_gradient(
@@ -486,7 +492,7 @@ ggplot(louisiana) +
 
 In the previous example, we use the 7th color as `high` because we didn't define the number of colors the palette generates. By default, this number is 7, so the 7th color is the lightest color. We can achieve the exact same result by generating n colors and selecting the nth value as `high`, e.g. using n = 2:
 
-```{r fig.height=4, fig.width=5, message=FALSE}
+```{r  message=FALSE}
 ggplot(louisiana) + 
   geom_sf(aes(fill = estimate)) + 
   scale_fill_gradient(
@@ -495,33 +501,33 @@ ggplot(louisiana) +
   )
 ```
 
-*Note:* You could also adjust the base color used to generate the palette with the `base` argument, but that's not recommended. Under the hood, the function uses `monochromeR::generate_palette()`[^1].
+*Note:* You could also adjust the base color used to generate the palette with the `base` argument, but that's not recommended. Under the hood, the function uses `monochromeR::generate_palette()`[^4].
 
-[^1]: See {monochromeR} on [github](https://github.com/cararthompson/monochromeR "Cara R Thompson (2021). monochromeR: A package for creating monochrome colour palettes and easily converting rgba values to hex codes.").
+[^4]: See {monochromeR} on [github](https://github.com/cararthompson/monochromeR "Cara R Thompson (2021). monochromeR: A package for creating monochrome colour palettes and easily converting rgba values to hex codes.").
 
 Here are all gradient palettes:
 
 `la_gradient_palette()`
 
-```{r fig.width=5, fig.height = 5, message=FALSE}
+```{r  message=FALSE}
 show_col(paste(la_gradient_palette()))
 ```
 
 `us_gradient_palette()`
 
-```{r fig.width=5, fig.height = 5, message=FALSE}
+```{r  message=FALSE}
 show_col(paste(us_gradient_palette()))
 ```
 
 `ur_gradient_palette()`
 
-```{r fig.width=5, fig.height = 5, message=FALSE}
+```{r  message=FALSE}
 show_col(paste(ur_gradient_palette()))
 ```
 
 `ru_gradient_palette()`
 
-```{r fig.width=5, fig.height = 5, message=FALSE}
+```{r  message=FALSE}
 show_col(paste(ru_gradient_palette()))
 ```
 
@@ -536,9 +542,9 @@ col_la_gradient %>% paste %>% show_col()
 
 #### Miscellaneous palette
 
-You can access the miscellaneous colors in two ways: 1) via printing the list of named colors and/or individual directly to your console (see [Miscellaneous colors]), or 2) via the function `misc_palette()`. Just like other palette functions in blancocentR, this function will generate colors, 21 to be exact. You can use these colors directly with ggplot using `scale_*_manual(values = misc_palette())`, depending on how you have mapped your aesthetics. This will work as long as 1) your variable is discrete, and 2) your variable doesn't exceed 21 distinct levels[^2].
+You can access the miscellaneous colors in two ways: 1) via printing the list of named colors and/or individual directly to your console (see [Miscellaneous colors]), or 2) via the function `misc_palette()`. Just like other palette functions in blancocentR, this function will generate colors, 21 to be exact. You can use these colors directly with ggplot using `scale_*_manual(values = misc_palette())`, depending on how you have mapped your aesthetics. This will work as long as 1) your variable is discrete, and 2) your variable doesn't exceed 21 distinct levels[^5].
 
-[^2]: If your variable does exceed 21 distinct levels, you really shouldn't use colors to distinguish them!
+[^5]: If your variable does exceed 21 distinct levels, you really shouldn't use colors to distinguish them!
 
 ```{r }
 p4 + 
@@ -564,12 +570,12 @@ The output shows 5 rows:
 
 5.  desaturated (gray-scale)
 
-```{r fig.width=5, fig.height = 5, message=FALSE}
+```{r message=FALSE}
 show_cvd(misc_palette(n = 5))
 ```
 
-*Note:* Under the hood, the function uses `scales::show_col()`[^3] and functions from the {colorspace}[^4] package.
+*Note:* Under the hood, the function uses `scales::show_col()`[^6] and functions from the {colorspace}[^7] package.
 
-[^3]: See the {scales} [documentation site](https://scales.r-lib.org "Wickham H, Pedersen T, Seidel D (2023). scales: Scale Functions for Visualization. R package version 1.3.0.").
+[^6]: See the {scales} [documentation site](https://scales.r-lib.org "Wickham H, Pedersen T, Seidel D (2023). scales: Scale Functions for Visualization. R package version 1.3.0.").
 
-[^4]: See the {colorspace} [documentation website](https://colorspace.r-forge.r-project.org "Zeileis A, Fisher JC, Hornik K, Ihaka R, McWhite CD, Murrell P, Stauffer R, Wilke CO (2020). “colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes.” Journal of Statistical Software, 96(1), 1–49. doi:10.18637/jss.v096.i01.").
+[^7]: See the {colorspace} [documentation website](https://colorspace.r-forge.r-project.org "Zeileis A, Fisher JC, Hornik K, Ihaka R, McWhite CD, Murrell P, Stauffer R, Wilke CO (2020). “colorspace: A Toolbox for Manipulating and Assessing Colors and Palettes.” Journal of Statistical Software, 96(1), 1–49. doi:10.18637/jss.v096.i01.").
