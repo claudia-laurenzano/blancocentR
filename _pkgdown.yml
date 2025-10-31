@@ -1,10 +1,12 @@
 url: https://claudia-laurenzano.github.io/blancocentR/
+
+pkgdown:
+  build:
+    before: pkgdown/_pkgdown.R
+
 template:
   bootstrap: 5
   bootswatch: yeti
-  pkgdown:
-  build:
-    before: pkgdown/_pkgdown.R
   includes:
     in_header: |
       <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Bitter:wght@400;700&display=swap" rel="stylesheet">
