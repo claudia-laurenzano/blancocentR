@@ -5,8 +5,8 @@
 \title{A ggplot2 theme for Blanco Center LA FIRST visualizations}
 \usage{
 theme_lafirst(
-  title_font = "Univers LT Std",
-  base_font = "Univers LT Std",
+  title_font = "Univers",
+  base_font = "Univers",
   dark_text = "#1A242F",
   light_text = "#575E66",
   void = FALSE,
@@ -48,6 +48,6 @@ Grid lines for x and y axes can be added, or all axes can be removed, e.g. for m
 }
 \examples{
 \dontrun{
-theme_lafirst(title_font = "Univers LT Std", base_font = "Univers LT Std", void = TRUE)
+theme_lafirst(title_font = "Univers", base_font = "Univers", void = TRUE)
 }
 }

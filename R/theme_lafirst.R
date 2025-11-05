@@ -24,10 +24,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' theme_lafirst(title_font = "Univers LT Std", base_font = "Univers LT Std", void = TRUE)
+#' theme_lafirst(title_font = "Univers", base_font = "Univers", void = TRUE)
 #' }
-theme_lafirst = function(title_font = "Univers LT Std",
-                         base_font = "Univers LT Std",
+theme_lafirst = function(title_font = "Univers",
+                         base_font = "Univers",
                          dark_text = "#1A242F",
                          light_text = "#575E66",
                          void = FALSE,
